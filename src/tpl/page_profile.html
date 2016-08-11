@@ -1,0 +1,278 @@
+
+
+<div class="wrapper-md">
+<h1 class="m-n font-thin h3">Ajustes</h1>
+<div class="" ng-controller="SigninFormController" ng-init="
+  app.settings.asideFixed = true;
+
+  app.settings.container = false;
+  app.settings.asideFolded = true;
+  app.hideAside = false;
+  app.hideFooter = true;
+
+    app.settings.asideFolded = true; ">
+
+  <!-- <a href class="btn btn-sm btn-info pull-right" onClick="window.print();">Print</a> -->
+  
+
+  <div class="col">
+    <div class="row m-t ">
+      <div class="col-sm-7">
+           <a href class="thumb-lg pull-left m-r">
+              <img src="img/User_Circle2.png" class="img-circle">
+            </a>
+           <!--  <a href class="thumb-lg pull-left m-r panel3">
+              <img src="img/User_Circle.png" >
+
+            </a> -->
+             <div class="m-b m-t-sm">
+              <span class="h2 text-light">Administrador </span>
+              <p></p>
+                <span class="h3 text-light">{{app.nombre}}</span>
+             <!--  <small class="m-l">{{app.nombre}}</small> -->
+            </div>
+            <a class="btn btn-xs btn-info" ng-hide="item.editing" ng-click="editItem(item)">Editar datos de cuenta</a>
+            <a class="btn btn-xs btn-success" ng-show="item.editing" ng-click="doneEditingDatos(item)">Guardar cambios</a>          
+      </div>
+    </div>
+  </div>
+   <div class="clear m-b">
+      <span class=" text-light h5 " >Nombre del usuario Administrador: </span>  <span class=" text-light h4 " >{{item.nombre}}</span>
+        <div class="h1">
+          <input type="text" placeholder="Nombre completo" class="form-control w-auto input-sm m-b-n-xxs " ng-model="item.nombre" ng-show="item.editing">
+          <span class=" text-light h5 " >E-mail del usuario Administrador </span>
+          <span class=" text-light h4 " >{{item.email}}</span>
+       
+         
+           <span class=" text-light h5 " ng-show="item.editing">Contraseña: </span>
+           <input type="text" ng-show="item.editing" placeholder="Contraseña" class="form-control w-auto input-sm" ng-model="item.password" > 
+        </div>      
+    </div>
+      <div>
+        Tipo de establecimiento
+          <ui-select ng-model="item.tipoEstablecimiento" theme="bootstrap" ng-show="item.editing">
+          <ui-select-match placeholder="Seleccione...">{{$select.selected.descripcion}}</ui-select-match>
+          <ui-select-choices group-by="'descripcion'" repeat="item.tipoEstablecimiento as item in tiposEstablecimiento | filter: $select.search">
+          <span ng-bind-html="item.descripcion | highlight: $select.search"></span>
+              <!-- <small ng-bind-html="item.email | highlight: $select.search"></small> -->
+          </ui-select-choices>
+          </ui-select>
+      </div>
+
+
+
+
+ <table class="table table-striped bg-white b-a">
+      <thead>
+        <tr>
+          <th style="width: 60px">ESTADO</th>
+          <th>MODULO</th>
+          <th style="width: 140px">PRECIO <MAP>MENSUAL</MAP></th>
+          <th style="width: 140px">TOTAL ANUAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="label bg-success">Activo</span></td>
+          <td>Inventario</td>
+          <td>Bs.F. 13.500,00</td>
+          <td>Bs.F. 54.000,00</td>
+        </tr>
+        <tr>
+          <td><span class="label bg-success">Activo</span></td>
+          <td>Nómina</td>
+          <td>Bs.F. 9.000,00</td>
+          <td>Bs.F. 36.000,00</td>
+        </tr>
+        <tr>
+          <td><span class="label bg-success">Activo</span></td>
+          <td>Contabilidad</td>
+          <td>Bs.F. 13.500,00</td>
+          <td>Bs.F. 54.000,00</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-right"><strong>Subtotal</strong></td>
+          <td>Bs.F. 144.000,00</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-right no-border"><strong>Descuento </strong>(40 %)</td>
+          <td>Bs.F. 9.600,00 </td>
+        </tr>
+       <!--  <tr>
+          <td colspan="3" class="text-right no-border"><strong>VAT Included in Total</strong></td>
+          <td>$0.00</td>
+        </tr>
+        <tr> -->
+          <td colspan="3" class="text-right no-border"><strong>Total</strong></td>
+          <td><strong>Bs.F. 86.400.00</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  
+    <!-- <div class="wrapper-sm ">
+       <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        <div class="m-t-n-xxs m-b-n-xxs m-l-xs">
+        </div>
+    </div> -->
+</div>
+<h2 class="font-thin m-b-lg">Planes y precios</h2>
+  <div class="row no-gutter">
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <div class="panel b-a">
+        <div class="panel-heading wrapper-xs bg-primary no-border">          
+        </div>
+        <div class="wrapper text-center b-b b-light">
+          <h4 class="text-u-c m-b-none">Básico</h4>
+          <h2 class="m-t-none">
+            <sup class="pos-rlt" style="top:-22px">Bs.F. </sup>
+            <span class="text-2x text-lt">12000</span>
+            <span class="text-xs">/ mes</span>
+          </h2>
+        </div>
+        <ul class="list-group text-center no-borders m-t-sm">
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> 90 días (3 meses) de uso
+          </li>
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> 1 pago trimestral de Bs.F. 36000.
+          </li>
+          <li class="list-group-item">
+            <i class="icon-close text-danger m-r-xs"></i> 0% de ahorro.
+          </li>
+          <!-- <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> 100 GB Space
+          </li>
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> 200 user accounts
+          </li>
+          <li class="list-group-item">
+            <i class="icon-close text-danger m-r-xs"></i> <span class="text-l-t">Free support for two years</span>
+          </li>
+          <li class="list-group-item">
+            <i class="icon-close text-danger m-r-xs"></i> <span class="text-l-t">Free upgrade for one year</span>
+          </li> -->
+        </ul>
+        <div class="panel-footer text-center">
+          <a href class="btn btn-primary font-bold m">Pruebélo ahora</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <div class="panel b-a m-t-n-md m-b-xl">
+        <div class="panel-heading wrapper-xs bg-warning dker no-border">
+          
+        </div>
+        <div class="wrapper bg-warning text-center m-l-n-xxs m-r-n-xxs">
+          <h4 class="text-u-c m-b-none">Inteligente</h4>
+          <h2 class="m-t-none">
+            <sup class="pos-rlt" style="top:-22px">Bs.F. </sup>
+            <span class="text-2x text-lt">7200</span>
+            <span class="text-xs">/ mes</span>
+          </h2>
+        </div>
+        <ul class="list-group text-center no-borders m-t-sm">
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> 365 días (1 año) de uso
+          </li>
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> 1 pago anual de Bs.F. 86400
+          </li>
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> 40 % de ahorro
+          </li>
+          <!-- <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> 200 user accounts
+          </li>
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> Free support for two years
+          </li>
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> Free upgrade for one year
+          </li> -->
+        </ul>
+        <div class="panel-footer text-center b-t m-t bg-light lter">
+          <div class="m-t-sm">Recomendado para usted</div>
+          <a href class="btn btn-warning font-bold m">Comience ahora</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <div class="panel b-a">
+        <div class="panel-heading wrapper-xs bg-primary no-border">          
+        </div>
+        <div class="wrapper text-center b-b b-light">
+          <h4 class="text-u-c m-b-none">Negocios</h4>
+          <h2 class="m-t-none">
+            <sup class="pos-rlt" style="top:-22px">Bs.F. </sup>
+            <span class="text-2x text-lt">8000</span>
+            <span class="text-xs">/ mes</span>
+          </h2>
+        </div>
+        <ul class="list-group text-center no-borders m-t-sm">
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> 180 días (6 meses) de uso.
+          </li>
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> 1 pago semestral de Bs.F. 48000
+          </li>
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> 33.33 % de ahorro.
+          </li>
+          <!-- <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> 1000 user accounts
+          </li>
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> Free support for two years
+          </li>
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> Free upgrade for one year
+          </li> -->
+        </ul>
+        <div class="panel-footer text-center">
+          <a href class="btn btn-primary font-bold m">Comience ahora</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 hidden-md">
+      <div class="panel b-a">
+        <div class="panel-heading wrapper-xs bg-primary no-border">
+          
+        </div>
+        <div class="wrapper text-center b-b b-light">
+          <h4 class="text-u-c m-b-none">Enterprise</h4>
+          <h2 class="m-t-none">
+            <sup class="pos-rlt" style="top:-22px">$</sup>
+            <span class="text-2x text-lt">399</span>
+            <span class="text-xs">/ mo</span>
+          </h2>
+        </div>
+        <ul class="list-group text-center no-borders m-t-sm">
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> Email preview on air
+          </li>
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> Spam testing and blocking
+          </li>
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> Unlimited Space
+          </li>
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> Unlimited user accounts
+          </li>
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> Free support for two years
+          </li>
+          <li class="list-group-item">
+            <i class="icon-check text-success m-r-xs"></i> Free upgrade for one year
+          </li>
+        </ul>
+        <div class="panel-footer text-center">
+          <a href class="btn btn-primary font-bold m">Start your free trial</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

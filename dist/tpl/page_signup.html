@@ -1,0 +1,64 @@
+  <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        .app { background-color: #272C32; }
+    </style>
+    <div class="bloque">
+<div class="container entrada col-md-12 w-xxlimagenes w-auto-xs"  ng-init="app.settings.container = false;">
+<img src="img/logofB.png">
+<div class="panel2">
+<div ng-controller="CarouselDemoCtrl" class="panel b-a2" set-ng-animate="false">
+       
+        <carousel interval="myInterval">
+          <slide ng-repeat="slide in slides" active="slide.active">
+            <img ng-src="{{slide.image}}" class="img-full">
+            <div class="carousel-caption">
+             <!--  <h4>Slide {{$index}}</h4>
+              <p>{{slide.text}}</p> -->
+            </div>
+          </slide>
+        </carousel>
+       <!--  <div class="panel-footer">
+          <button type="button" class="btn btn-default m-r" ng-click="addSlide()">Add Slide</button>
+          Interval: <input type="number" class="form-control w-sm inline" ng-model="myInterval"> ms          
+        </div> -->
+      </div>
+</div>
+</div>
+
+
+    <div class="container entrada col-md-10 w-xxl4" ng-controller="SignupFormController" ng-init="app.settings.container = false;">
+      <a href class="navbar-brand block m-t"> </a>
+      <div class="m-b-lg ">
+        <div class="wrapper inicio text-center">
+      <div class="inicio2">Crea una cuenta de <Strong >Katuru</strong>ERP ®</div>
+      
+    </div>
+        <form name="form" class="form-validation">
+          <!-- <div class="text-danger wrapper text-center" ng-show="authError">
+              {{authError}}
+          </div> -->
+          <div class="list-group list-group-sm">
+            <div class="list-group-item">
+              <input placeholder="Nombre" class="form-control no-border" ng-model="user.nombre" required>
+            </div>
+            <div class="list-group-item">
+              <input type="email" placeholder="Email" class="form-control no-border" ng-model="user.email" required>
+            </div>
+            <div class="list-group-item">
+               <input type="password" placeholder="Contraseña" class="form-control no-border" ng-model="user.password" required>
+            </div>
+          </div>
+          <div class="checkbox m-b-md m-t-none">
+            <label class="i-checks">
+              <input type="checkbox" ng-model="agree" required><i></i> Acepto los <a href>términos de contrato</a>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-lg btn-primary2 btn-block" ng-click="ok(user)" ng-disabled='form.$invalid'>Crear cuenta</button>
+          <div class="line line-dashed"></div>
+          <p class="text-center"><small>Ya tienes una cuenta?</small></p>
+          <a ui-sref="access.signin" class="btn btn-lg btn-default btn-block">Iniciar sessión</a>
+        </form>
+      </div>
+      <div class="text-center" ng-include="'tpl/blocks/page_footer.html'"></div>
+    </div></div>

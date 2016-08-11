@@ -1,0 +1,99 @@
+<div class="modal-header">
+    <h3 class="modal-title">Registrar Parto</h3>
+</div>
+<div class="modal-body">
+    <!-- <ul>
+        <li ng-repeat="item in items">
+            <a ng-click="selected.item = item">{{ item }}</a>
+        </li>
+    </ul>
+    Selected: <b>{{ selected.item }}</b> -->
+
+     <!-- <input type="text" class="form-control" placeholder="fecha" ng-model="item.fecha" >  -->
+    <div class="panel-heading font-bold">Datos de la cría </div>
+    <div class="row" >
+    <div class="form-group">
+
+            <div class="thumb-lg avatar inline">
+              <img ng-src="{{item.sexo == 'Hembra' && 'img/cow.png' || 'img/bull.png'}}" />
+
+
+             <!--  <img ng-src="{{item.avatar}}" ng-show="item.avatar"> -->
+            </div>
+             <div class="btn-group" >
+                    <label  ng-change='sexado(item)' class="btn btn-default" ng-model="item.sexo" btn-radio="'Hembra'">Hembra</label>
+                    <label ng-change='sexado(item)' class="btn btn-default" ng-model="item.sexo" btn-radio="'Macho'">Macho</label>
+                  </div>
+
+            
+    </div>
+    </div>
+
+
+<!--  <div class="row" >
+    <div class="form-group">
+<p></p>
+
+           
+                  <div class="btn-group" >
+                    <label  class="btn btn-default" ng-model="item.sexo" btn-radio="'Hembra'">Hembra</label>
+                    <label  class="btn btn-default" ng-model="item.sexo" btn-radio="'Macho'">Macho</label>
+                  </div>
+               
+
+
+             </div>
+    </div> -->
+
+
+
+    <div class="row" >
+    <div class="form-group">
+            <div class="col-md-6">
+             
+                <input placeholder="id Arete"type="text" class="form-control" 
+               ng-model="item.barcode" 
+          
+               >
+             </div>  
+ </div>
+    </div>
+    <div class="row" >
+    <div class="form-group">
+           
+             <div class="col-md-6">
+             
+                <input placeholder="Nombre"type="text" class="form-control" 
+               ng-model="item.nombre" 
+          
+               >
+             </div>  
+ </div>
+    </div>
+   
+    <div class="row" >
+    <div class="form-group">
+
+               <div class="col-sm-8" >
+                      <!-- <i class="icon-music-tone "></i> Raza -->
+                  <!--     <p class="form-control-static" ng-hide="item.editing">{{item.raza}}</p> -->
+                      <ui-select ng-model="item.raza" theme="bootstrap" >
+                        <ui-select-match placeholder="Raza...">{{$select.selected.nombre}}</ui-select-match>
+                        <ui-select-choices group-by="'nombre'" repeat="item.nombre as item in razas | filter: $select.search">
+                          <span ng-bind-html="item.nombre | highlight: $select.search"></span>
+                          <!-- <small ng-bind-html="item.email | highlight: $select.search"></small> -->
+                        </ui-select-choices>
+                      </ui-select>
+                </div>
+              </div>
+    </div>
+   
+       
+         
+       
+
+</div>
+<div class="modal-footer">                  
+    <button class="btn btn-default" ng-click="cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="okParto(item)">OK</button>
+</div>

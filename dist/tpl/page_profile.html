@@ -1,0 +1,142 @@
+
+<div class="bg-light lter b-b wrapper-md hidden-print">
+  <!-- <a href class="btn btn-sm btn-info pull-right" onClick="window.print();">Print</a> -->
+  <h1 class="m-n font-thin h3">Datos de cuenta</h1>
+</div>
+<div class="wrapper-md">
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="SigninFormController">
+  <div class="col">
+   <!--  <div style="background:url(img/c4.jpg) center center; background-size:cover"> -->
+     <!--  <div class="wrapper-lg bg-white-opacity"> -->
+
+        <div class="row m-t ">
+          <div class="col-sm-7">
+            <a href class="thumb-lg pull-left m-r panel3">
+              <img src="img/logofB.png" >
+            </a>
+            <div class="clear m-b">
+              <div class="m-b m-t-sm">
+                <span class="h2 text-black">Administrador </span>
+                <p></p>
+                  <span class="h3 text-black">{{app.nombre}}</span>
+               <!--  <small class="m-l">{{app.nombre}}</small> -->
+              </div>
+ <a class="btn btn-xs btn-info" ng-hide="item.editing" ng-click="editItem(item)">Editar datos de cuenta</a>
+          <a class="btn btn-xs btn-success" ng-show="item.editing" ng-click="doneEditingDatos(item)">Guardar cambios</a>
+
+
+              <div class="wrapper-lg ">
+       <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        <div class="m-t-n-xxs m-b-n-xxs m-l-xs">
+        
+      
+        </div>
+      </div>
+
+              
+
+              <div ng-show="item.editing" class="h1">
+                    <input type="text" placeholder="Nombre completo" class="form-control w-auto input-lg m-b-n-xxs font-bold" ng-model="item.nombre" >
+                    <input type="text" placeholder="email" class="form-control w-auto input-lg font-bold" ng-model="item.email" > 
+                     <input type="text" placeholder="Contraseña" class="form-control w-auto input-lg font-bold" ng-model="item.password" > 
+
+
+
+              </div>
+           
+                   
+               
+             <!--  <p class="m-b">
+                <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-twitter"></i></a>
+                <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-facebook"></i></a>
+                <a href class="btn btn-sm btn-bg btn-rounded btn-default btn-icon"><i class="fa fa-google-plus"></i></a>
+              </p>
+              <a href class="btn btn-sm btn-success btn-rounded">Follow</a> -->
+            </div>
+
+          </div>
+          <div class="col-sm-5">
+           <div class="col-sm-8" ng-show="item.editing">
+                       Tipo de establecimiento
+
+
+                     <ui-select ng-model="item.tipoEstablecimiento" theme="bootstrap" ng-show="item.editing">
+                        <ui-select-match placeholder="Seleccione...">{{$select.selected.descripcion}}</ui-select-match>
+                        <ui-select-choices group-by="'descripcion'" repeat="item.tipoEstablecimiento as item in tiposEstablecimiento | filter: $select.search">
+                          <span ng-bind-html="item.descripcion | highlight: $select.search"></span>
+                          <!-- <small ng-bind-html="item.email | highlight: $select.search"></small> -->
+                        </ui-select-choices>
+                      </ui-select>
+
+                       </div>
+          <!--   <div class="pull-right pull-none-xs text-center">
+              <a href class="m-b-md inline m">
+                <span class="h3 block font-bold">2k</span>
+                <small>Followers</small>
+              </a>
+              <a href class="m-b-md inline m">
+                <span class="h3 block font-bold">250</span>
+                <small>Following</small>
+              </a>
+            </div> -->
+          </div>
+                      
+        </div>
+     <!--  </div> -->
+ <!--    </div> -->
+  <!--   <div class="wrapper bg-white b-b">
+      <ul class="nav nav-pills nav-sm">
+        <li class="active"><a href>Stream</a></li>
+        <li><a href>Profile</a></li>
+        <li><a href>Messages</a></li>
+      </ul>
+    </div> -->
+    
+  </div>
+</div>
+ <table class="table table-striped bg-white b-a">
+      <thead>
+        <tr>
+          <th style="width: 60px">ESTADO</th>
+          <th>MODULO</th>
+          <th style="width: 140px">PRECIO</th>
+          <th style="width: 140px">TOTAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="label bg-success">Activo</span></td>
+          <td>Inventario</td>
+          <td>Bs.F. 24.000,00</td>
+          <td>Bs.F. 24.000,00</td>
+        </tr>
+        <tr>
+          <td><span class="label bg-success">Activo</span></td>
+          <td>Nómina</td>
+          <td>Bs.F. 12.000,00</td>
+          <td>Bs.F. 12.000,00</td>
+        </tr>
+        <tr>
+          <td><span class="label bg-success">Activo</span></td>
+          <td>Contabilidad</td>
+          <td>Bs.F. 24.000,00</td>
+          <td>Bs.F. 24.000,00</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-right"><strong>Subtotal</strong></td>
+          <td>Bs.F. 60.000,00</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-right no-border"><strong>Descuento</strong></td>
+          <td>$0.00</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-right no-border"><strong>VAT Included in Total</strong></td>
+          <td>$0.00</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-right no-border"><strong>Total</strong></td>
+          <td><strong>$1607.00</strong></td>
+        </tr>
+      </tbody>
+    </table> </div>

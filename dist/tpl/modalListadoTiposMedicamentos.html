@@ -1,0 +1,49 @@
+<script type="text/javascript">
+
+        
+</script>
+
+<div class="modal-header">
+    <h3 class="modal-title">Listado tipos de medicamentos</h3>
+</div>
+<div class="modal-body">
+   
+            <div class="panel panel-default" >
+            <div class="table-responsive">
+      
+
+
+
+              <table class="table" ui-refresh="tiposMedicamentos">
+    <tr>
+       
+        <th>Nombre
+        </th>
+        
+        
+        <th></th>
+    </tr>
+    <tr ng-repeat="tipo in tiposMedicamentos">
+        
+        <td>{{tipo.nombre}}
+        </td>
+       
+        
+        <td>
+        <input type="button" value="Borrar" class="btn btn-danger btn-xs" ng-click="borrarTipoMedicamento(tipo)"/>
+        </td>
+    </tr>
+</table>
+            </div> 
+          </div>
+            <!-- <div class="col-md-6">
+            <input placeholder="Raza"type="text" class="form-control" 
+            ng-model="item.nombre">
+            </div>  --> 
+        </div>
+   <!--  </div>
+</div>
+ --><div class="modal-footer">                  
+    <button class="btn btn-default" ng-click="cancel()">Salir</button>
+  <!--   <button class="btn btn-primary" ng-click="openRaza()">Agregar Raza</button> -->
+</div>

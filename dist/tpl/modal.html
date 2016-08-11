@@ -1,0 +1,41 @@
+<div class="modal-header">
+    <h3 class="modal-title">Agregar cancion</h3>
+</div>
+<div class="modal-body">
+    <!-- <ul>
+        <li ng-repeat="item in items">
+            <a ng-click="selected.item = item">{{ item }}</a>
+        </li>
+    </ul>
+    Selected: <b>{{ selected.item }}</b> -->
+
+     <input type="text" class="form-control" placeholder="nombre de la cancion" ng-model="item.nombreCancion" > 
+    
+     <div class="row" >
+    <div class="form-group">
+
+<div class="col-md-4">
+             
+                <input placeholder="min"type="number" class="form-control" 
+               ng-model="item.duracion1" 
+               id="duracion1"  max="60" min="1" 
+               >
+             </div>  
+
+             <div class="col-md-4">
+           
+                <input placeholder="seg" type="number" class="form-control" 
+               ng-model="item.duracion2" 
+               id="duracion2"  max="60" min="1" 
+               >
+        </div>
+       
+         
+       
+      </div>
+</div>
+</div>
+<div class="modal-footer">                  
+    <button class="btn btn-default" ng-click="cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="ok(item)">OK</button>
+</div>

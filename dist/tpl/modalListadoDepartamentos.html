@@ -1,0 +1,53 @@
+<script type="text/javascript">
+
+        
+</script>
+
+<div class="modal-header">
+    <h3 class="modal-title">Listado de departamentos</h3>
+</div>
+<div class="modal-body">
+   
+            <div class="panel panel-default" >
+            <div class="table-responsive">
+      
+
+
+
+              <table class="table" ui-refresh="departamentos">
+    <tr>
+       
+        <th>Descripción
+        </th>
+        
+      <!--   <th>Tipo
+        </th>
+        <th>Observaciones</th> -->
+        <th></th>
+    </tr>
+    <tr ng-repeat="departamento in departamentos">
+        
+        <td>{{departamento.nombre}}
+        </td>
+       <!--  <td>
+          {{departamento.TipoDepartamento}}
+        </td> -->
+        <!-- <td>{{departamento.observaciones}}</td> -->
+        <td>
+        <input type="button" value="Borrar" class="btn btn-danger btn-xs" ng-click="borrarDepartamento(departamento)"/>
+        </td>
+    </tr>
+</table>
+            </div> 
+          </div>
+            <!-- <div class="col-md-6">
+            <input placeholder="Raza"type="text" class="form-control" 
+            ng-model="item.nombre">
+            </div>  --> 
+        </div>
+   <!--  </div>
+</div>
+ --><div class="modal-footer">                  
+    <button class="btn btn-default" ng-click="cancel()">Salir</button>
+  <!--   <button class="btn btn-primary" ng-click="openRaza()">Agregar Raza</button> -->
+</div>

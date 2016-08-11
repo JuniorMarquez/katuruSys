@@ -1,0 +1,257 @@
+     <script type="text/ng-template" id="modalDepartamento.html">
+            <div ng-include="'tpl/modalDepartamento.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalSucursal.html">
+            <div ng-include="'tpl/modalSucursal.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalAlimento.html">
+            <div ng-include="'tpl/modalAlimento.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalListadoAlimentos.html">
+            <div ng-include="'tpl/modalListadoAlimentos.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalRaza.html">
+            <div ng-include="'tpl/modalRaza.html'"></div>
+          </script>
+
+ <script type="text/ng-template" id="modalListadoRazas.html">
+            <div ng-include="'tpl/modalListadoRazas.html'"></div>
+          </script>
+          <script type="text/ng-template" id="modalListadoAlimentos.html">
+            <div ng-include="'tpl/modalListadoAlimentos.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalListadoSucursales.html">
+            <div ng-include="'tpl/modalListadoSucursales.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalListadoDepartamentos.html">
+            <div ng-include="'tpl/modalListadoDepartamentos.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalListadoTiposDepartamentos.html">
+            <div ng-include="'tpl/modalListadoTiposDepartamentos.html'"></div>
+          </script>
+          <script type="text/ng-template" id="modalListadoTiposMedicamentos.html">
+            <div ng-include="'tpl/modalListadoTiposMedicamentos.html'"></div>
+          </script>
+             <script type="text/ng-template" id="modalListadoTiposAlimentos.html">
+            <div ng-include="'tpl/modalListadoTiposAlimentos.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalTipoMedicamento.html">
+            <div ng-include="'tpl/modalTipoMedicamento.html'"></div>
+          </script>
+            <script type="text/ng-template" id="modalTipoDepartamento.html">
+            <div ng-include="'tpl/modalTipoDepartamento.html'"></div>
+          </script>
+            <script type="text/ng-template" id="modalTipoAlimento.html">
+            <div ng-include="'tpl/modalTipoAlimento.html'"></div>
+          </script>
+
+
+      <div class="navbar-header {{app.settings.navbarHeaderColor}}">
+        <button class="pull-right visible-xs dk" ui-toggle-class="show" data-target=".navbar-collapse">
+          <i class="glyphicon glyphicon-cog"></i>
+        </button>
+        <button class="pull-right visible-xs" ui-toggle-class="off-screen" data-target=".app-aside" ui-scroll="app">
+          <i class="glyphicon glyphicon-align-justify"></i>
+        </button>
+        <!-- brand -->
+        <a href="#/" class="navbar-brand text-lt">
+     <img src="img/logo.png" alt="."> 
+        </a>
+        <!-- / brand -->
+      </div>
+      <!-- / navbar header -->
+
+      <!-- navbar collapse -->
+      <div class="collapse pos-rlt navbar-collapse box-shadow {{app.settings.navbarCollapseColor}}">
+        <!-- buttons -->
+        <div class="nav navbar-nav hidden-xs">
+          <a href class="btn no-shadow navbar-btn" ng-click="app.settings.asideFolded = !app.settings.asideFolded">
+            <i class="fa {{app.settings.asideFolded ? 'fa-indent' : 'fa-dedent'}} fa-fw"></i>
+          </a>
+          <a href class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
+            <i class="icon-user fa-fw"></i>
+          </a>
+        </div>
+        <!-- / buttons -->
+
+        <!-- link and dropdown -->
+        <ul class="nav navbar-nav hidden-sm">
+          <li class="dropdown pos-stc" dropdown>
+            <a href class="dropdown-toggle" dropdown-toggle>
+              <span><i class="fa fa-sliders" tooltip-placement="bottom" tooltip="Parametros de la aplicación"></i></span> 
+              <span class="caret"></span>
+            </a>
+            <div class="dropdown-menu wrapper w-full bg-white" ng-controller="FlotChartDemoCtrl">
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="m-l-xs m-t-xs m-b-xs font-bold">Sucursales <!-- <span class="badge badge-sm bg-success">10</span> --></div>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <ul class="list-unstyled l-h-2x">
+                        <li>
+                          <a ng-click="openSucursal()"><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Agregar sucursal</a>
+                        </li>
+                        <li>
+                          <a ng-click="openListadoSucursales()" href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Ver listado</a>
+                        </li>
+                        
+                      </ul>
+                    </div>
+                    
+                  </div>
+
+<!-- <div class="m-l-xs m-t-xs m-b-xs font-bold">Tipos de Medicamento
+
+ <button ng-click="openListadoTiposMedicamentos()"class="btn btn-dark btn-xs" tooltip-placement="bottom" tooltip="Ver listado"><i class="fa fa-bars"></i></button>
+                           <button  ng-click="openTipoMedicamento()"class="btn btn-xs btn-default" tooltip-placement="bottom" tooltip="Agregar tipo de departamento">
+          <i class="fa fa-plus text"></i>
+         
+        </button>
+                  </div> -->
+
+                </div>
+                <div class="col-sm-4" >
+                  <div class="m-l-xs m-t-xs m-b-xs font-bold">Departamentos <!-- <span class="badge badge-sm bg-primary">10</span> --></div>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <ul class="list-unstyled l-h-2x">
+                        <li>
+                          <a ng-click="openDepartamento()"><i class="fa fa-fw fa-angle-right text-muted m-r-xs" ></i>Agregar departamento</a>
+                        </li>
+                        <li>
+                          <a ng-click="openListadoDepartamentos()" href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Ver listado</a>
+                        </li>
+
+                        
+                      </ul>
+                    </div>
+                    
+                  </div>
+                 <!--  <div class="m-l-xs m-t-xs m-b-xs font-bold">Tipos de Baños
+
+ <button ng-click="openListadoTiposDepartamentos()" class="btn btn-dark btn-xs" tooltip-placement="bottom" tooltip="Ver listado"><i class="fa fa-bars"></i></button>
+                           <button ng-click="openTipoDepartamento()"class="btn btn-xs btn-default" tooltip-placement="bottom" tooltip="Agregar tipo de departamento">
+          <i class="fa fa-plus text"></i>
+         
+        </button>
+                  </div> -->
+                </div>
+                <!-- <div class="col-sm-4">
+                  <div class="m-l-xs m-t-xs m-b-xs font-bold">Alimentos </div>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <ul class="list-unstyled l-h-2x">
+                        <li>
+                          <a ng-click="openAlimento()"><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Agregar alimento</a>
+                        </li>
+                        <li>
+                          <a ng-click="openListadoAlimentos()"><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Ver listado</a>
+                        </li>
+                        
+                      </ul>
+                    </div>
+                    
+                  </div>
+                  <div class="m-l-xs m-t-xs m-b-xs font-bold">Tipos de Alimento
+
+ <button ng-click="openListadoTiposAlimentos()" class="btn btn-dark btn-xs" tooltip-placement="bottom" tooltip="Ver listado"><i class="fa fa-bars"></i></button>
+                           <button ng-click="openTipoAlimento()" class="btn btn-xs btn-default" tooltip-placement="bottom" tooltip="Agregar tipo de departamento">
+          <i class="fa fa-plus text"></i>
+         
+        </button>
+                </div>
+         
+                
+                </div> -->
+                 <!-- <div class="col-sm-4">
+                  <div class="m-l-xs m-t-xs m-b-xs font-bold">Razas </div>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <ul class="list-unstyled l-h-2x">
+                        <li>
+                          <a ng-click="openRaza()"><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Agregar raza</a>
+                        </li>
+                        <li>
+                          <a ng-click="openListadoRazas()"><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Ver listado</a>
+                        </li>
+                        
+                      </ul>
+                    </div>
+                    
+                  </div>
+
+                </div> -->
+             
+              </div>
+            </div>
+          </li>
+       
+        </ul>
+        <!-- / link and dropdown -->
+
+        <!-- search form -->
+        <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
+          <div class="form-group">
+            <div class="input-group" ng-hide="$state.includes('apps.articulo')">
+              <input type="text" ng-model="selected" typeahead="item as item.nombre for item in items2  | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Buscar Articulo...">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-sm bg-light rounded" ng-click="selectItem2(selected)"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </div>
+        </form>
+        <!-- / search form -->
+
+        <!-- nabar right -->
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown hidden-sm" is-open="lang.isopen" dropdown>
+            <a href class="dropdown-toggle" dropdown-toggle>
+              {{selectLang}} <b class="caret"></b>
+            </a>
+            <!-- dropdown -->
+            <ul class="dropdown-menu animated fadeInRight w">
+              <li ng-repeat="(langKey, label) in langs">
+                <a ng-click="setLang(langKey, $event)" href>{{label}}</a>
+              </li>
+            </ul>
+            <!-- / dropdown -->
+          </li>
+          <li class="hidden-xs">
+            <a ui-fullscreen></a>
+          </li>
+          
+            <!-- / dropdown -->
+          </li>
+          <li class="dropdown" dropdown>
+            <a href class="dropdown-toggle clear" dropdown-toggle>
+              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                <img src="img/User_Circle.png" alt="...">
+                <i class="on md b-white bottom"></i>
+              </span>
+              <span class="hidden-sm hidden-md">{{app.usuario}}</span> <b class="caret"></b>
+            </a>
+            <!-- dropdown -->
+            <ul class="dropdown-menu animated fadeInRight w">
+              <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
+                <div>
+                  <!-- <p>300mb of 500mb used</p> -->
+                </div>
+                <progressbar value="60" class="progress-xs m-b-none bg-white"></progressbar>
+              </li>
+           
+              <li>
+                <a ui-sref="app.page.profile">Ajustes</a>
+              </li>
+           
+              <li class="divider"></li>
+              <li>
+                <a ui-sref="access.signin">Cerrar sessión</a>
+              </li>
+            </ul>
+            <!-- / dropdown -->
+          </li>
+        </ul>
+        <!-- / navbar right -->
+
+      </div>
+      <!-- / navbar collapse -->

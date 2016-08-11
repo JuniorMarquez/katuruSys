@@ -1,0 +1,84 @@
+<script type="text/javascript">
+    // $(document).ready(function() {
+    // var table = $('#razas').dataTable( {
+    //     // "ajax": "data/arrays.txt",
+    //     // "columnDefs": [ {
+    //     //     "targets": -1,
+    //     //     "data": null,
+    //     //     "defaultContent": "<button>Click!</button>"
+    //     // } ]
+    // } );
+
+
+    // $('#razas tbody').on( 'click', 'button', function () {
+    //     // var uno = $index.index;
+    //      // alert('dato: ' +$(this).closest('tr').index());
+    //      var data = razas.row( $(this).parent('tr') ).data();
+    //      alert( data[0] +"'s salary is: "+ data[ 1 ] );
+    // } );
+// } );
+        
+</script>
+
+<div class="modal-header">
+    <h3 class="modal-title">Listado razas</h3>
+</div>
+<div class="modal-body">
+    <!-- <ul>
+        <li ng-repeat="item in items">
+            <a ng-click="selected.item = item">{{ item }}</a>
+        </li>
+    </ul>
+    Selected: <b>{{ selected.item }}</b> -->
+
+     <!-- <input type="text" class="form-control" placeholder="fecha" ng-model="item.fecha" >  -->
+<!--     <div class="row" >
+        <div class="form-group"> -->
+            <div class="panel panel-default" >
+            <div class="table-responsive">
+        <!--       <table ui-jq="dataTable" id="razas"ui-refresh="razas" ui-options="tbOptionsListadoRazas" class="table table-striped m-b-none">
+                <thead>
+                  <tr>
+                    <th  style="width:30%">Fecha</th>
+                    <th  style="width:40%">Nombre</th>  
+                    <th  vstyle="width:30%">Opciones</th>
+      
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table> -->
+
+
+
+              <table class="table" ui-refresh="razas">
+    <tr>
+       
+        <th>Nombre
+        </th>
+        
+        
+    </tr>
+    <tr ng-repeat="raza in razas">
+        
+        <td>{{raza.nombre}}
+        </td>
+        
+        <td>
+        <input type="button" value="Borrar" class="btn btn-danger btn-xs" ng-click="borrar(raza)"/>
+        </td>
+    </tr>
+</table>
+            </div> 
+          </div>
+            <!-- <div class="col-md-6">
+            <input placeholder="Raza"type="text" class="form-control" 
+            ng-model="item.nombre">
+            </div>  --> 
+        </div>
+   <!--  </div>
+</div>
+ --><div class="modal-footer">                  
+    <button class="btn btn-default" ng-click="cancel()">Salir</button>
+  <!--   <button class="btn btn-primary" ng-click="openRaza()">Agregar Raza</button> -->
+</div>

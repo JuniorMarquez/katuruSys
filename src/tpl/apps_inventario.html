@@ -1,0 +1,336 @@
+
+  <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        .app { background-color: #f0f3f4; }
+    </style> <!--hbox layout -->
+<script type="text/ng-template" id="modalSalida.html">
+            <div ng-include="'tpl/modalSalida.html'"></div>
+          </script>
+          <script type="text/ng-template" id="modalSumDepartamento.html">
+            <div ng-include="'tpl/modalSumDepartamento.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalConfirm.html">
+            <div ng-include="'tpl/modalConfirm.html'"></div>
+          </script>
+          <script type="text/ng-template" id="modalConfirm2.html">
+            <div ng-include="'tpl/modalConfirm2.html'"></div>
+          </script>
+            <script type="text/ng-template" id="modalSumAlimento.html">
+            <div ng-include="'tpl/modalSumAlimento.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalSumMedicamento.html">
+            <div ng-include="'tpl/modalSumMedicamento.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalEntrada.html">
+            <div ng-include="'tpl/modalEntrada.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalSalto.html">
+            <div ng-include="'tpl/modalSalto.html'"></div>
+          </script>
+         
+          <script type="text/ng-template" id="modalParto.html">
+            <div ng-include="'tpl/modalParto.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalPeso.html">
+            <div ng-include="'tpl/modalPeso.html'"></div>
+          </script>
+
+<div class="hbox hbox-auto-xs hbox-auto-sm bg-light " ng-init="
+  app.settings.asideFixed = true;
+
+  app.settings.container = false;
+  app.settings.asideFolded = true;
+  app.hideAside = false;
+  app.hideFooter = true;
+
+    app.settings.asideFolded = true; 
+ 
+ 
+  " ng-controller="InventarioCtrl">
+
+  <!-- column -->
+  <div class="col w b-r">
+    <div class="vbox">
+      <div class="row-row">
+        <div class="cell scrollable hover">
+          <div class="cell-inner" ui-refresh="categorias">
+            <div class="list-group no-radius no-border no-bg m-b-none" ui-refresh="categorias">
+              <a class="list-group-item b-b" ng-dblclick="selectCategoria({nombre:''})" ng-class="{'focus': (filter == '')}" ng-click="carga()">Categorías<span  tooltip-placement="bottom"  tooltip="Doble click para actualizar" class="pull-right text-muted inline wrapper-xs m-r-sm"><i class="fa fa-question"></i></span></a>
+
+              <a ng-repeat="item in categorias" ng-dblclick="editItem(item)" class="list-group-item m-l hover-anchor b-a no-select" ng-class="{'focus m-l-none': item.selected}" ng-click="selectCategoria(item)" ui-refresh="categorias">
+                <span  ng-click="openConfirm2(item)" tooltip-placement="left" tooltip="Borrar" class="pull-right text-muted hover-action"><i class="fa fa-times"></i></span>
+                <span class="block m-l-n" ng-class="{'m-n': item.selected }">{{ item.nombre ? item.nombre : 'Por definir' }}</span>
+                <input type="text" class="form-control pos-abt" ng-show="item.editing" ng-blur="doneEditingCategoria(item)" ng-model="item.nombre" style="top:3px;left:2px;width:98%" ui-focus="item.editing">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper b-t">
+       <!--  <span tooltip="Doble click para Editar" class="pull-right text-muted inline wrapper-xs m-r-sm"><i class="fa fa-question"></i></span> -->
+        <a tooltip="Agregar categoria" href class="btn btn-xs btn-default btn-addon" ng-click="createCategoria()"><i class="fa fa-plus fa-fw m-r-xs"></i> Categoría</a>
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+  <!-- column -->
+  <div class="col w-lg lter b-r">
+    <div class="vbox">
+      <div class="wrapper-xs b-b">
+        <div class="input-group m-b-xxs">
+          <span class="input-group-addon input-sm no-border no-bg"><i class="icon-magnifier text-md m-t-xxs"></i></span>
+          <input type="text" class="form-control input-sm no-border no-bg text-md" placeholder="{{categoria.nombre ? categoria.nombre : 'Todos'}}" ng-model="query">  
+        </div>
+      </div>
+      <div class="row-row">
+        <div class="cell scrollable hover">
+          <div class="cell-inner">
+            <div class="m-t-n-xxs">
+              <div class="list-group list-group-lg no-radius no-border no-bg m-b-none">
+                <a ng-repeat="item in items | filter:{categoria:filter} | filter:query | orderBy:'barcode'" class="list-group-item m-l" ng-class="{'select m-l-none': item.selected }" ng-click="selectItem(item)">
+                  <span class="block text-ellipsis m-l-n text-md" ng-class="{'m-l-none': item.selected }" popover="{{item.nombre}}" popover-trigger="mouseenter" popover-placement="bottom">
+                    {{ item.barcode }} <strong>{{ item.nombre }}</strong>
+                    <span ng-hide="item.barcode || item.nombre">sin nombre</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="text-center pos-abt w-full" style="top:50%;" ng-hide="(items | filter:{categoria:filter} | filter:query).length">Vacío</div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper b-t text-center" >
+        <a tooltip="Agregar articulo" href class="btn btn-xs btn-default btn-addon" ng-click="createItem()" ng-show="items"><i class="fa fa-plus fa-fw m-r-xs"></i> Articulo</a>
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+
+  <!-- column -->
+  <div class="col bg-white-only">
+    <div class="vbox">
+      <div class="wrapper-sm b-b">
+       <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        <div class="m-t-n-xxs m-b-n-xxs m-l-xs">
+          <a  class="btn btn-xs btn-default pull-right" ng-hide="!item" ng-click="openConfirm(item)"><i tooltip="Borrar articulo" tooltip-placement="left" class="fa fa-times"></i></a>
+          <a class="btn btn-xs btn-primary" ng-hide="item.editing || !item" ng-click="editItem(item)">Editar</a>
+          <a class="btn btn-xs btn-success" ng-show="item.editing" ng-click="doneEditingArticulo(item)">Guardar cambios</a>
+        </div>
+      </div>
+      <div class="row-row">
+        <div class="cell">
+          <div class="cell-inner">
+            <div class="wrapper-lg">
+              <div class="hbox h-auto m-b-lg">
+                <div class="col text-center w-sm">
+                <i class="fa fa-cube block m-b-xs2 fa-5x" ng-show="item.avatar"></i><p></p>
+                <i class=" glyphicon glyphicon-barcode block m-b-xs fa-2x" ng-show="item.avatar"></i> 
+                <p></p>{{item.barcode}}
+                  <div class="thumb-lg avatar inline">
+                   
+                    <!-- <img ng-src="{{item.sexo == 'Hembra' && 'img/cow.png' || 'img/bull.png'}}" ng-show="item.avatar"/> -->
+
+
+                   <!--  <img ng-src="{{item.avatar}}" ng-show="item.avatar"> -->
+                  </div>
+                </div>
+                <div class="colEditada v-middle font-thin">
+                  <div ng-hide="item.editing" class="h1" > {{item.nombre}} {{ item.mensajeNuevo }}</div>     
+                         
+                  <div ng-show="item.editing" class="h1">
+                    <input type="text" placeholder="Código de barras" class="form-control w-auto input-lg m-b-n-xxs font-bold" ng-model="item.barcode" >
+                    <input type="text" placeholder="Nombre" class="form-control w-auto input-lg font-bold" ng-model="item.nombre" > 
+                  </div>
+
+
+                  
+                  <!-- <div class="row list-icon" ng-show="item.sexo && !item.editing">
+
+                    <a tooltip="Ver Historial" href class="btn btn-sm btn-default btn-addon" ng-click="consultar(item)"><i class="fa fa-folder-open fa-fw m-r-xs"></i> Historial</a>
+
+                    <div class="col-md-3 col-sm-4" >
+                    <button ng-click="consultar(item)" class="btn btn-rounded btn-lg btn-icon btn-primary" tooltip="Ver historial del articulo">
+                      <i  class="fa fa-fw fa-folder-open icon text-success"  ></i> 
+                    </button>
+                    </div>
+                  </div> -->
+                  <p></p><p></p>
+                    <div class="row form-group col-sm-20" ng-hide="!item.categoria && !item.editing">
+                      
+                      <div class="col-sm-8" ng-hide="item.editing">
+                        <!-- <i class="icon-users"></i> --> <strong> Stock: </strong>
+                        <span class="form-control-static" >{{item.existencia}}</span>
+                       
+                      </div>
+                      <div class="col-sm-8" ng-hide="item.editing">
+                        <!-- <i class="icon-users"></i> --> <strong> Stock minimo: </strong>
+                        <span class="form-control-static" >{{item.stockMinimo}}</span>
+                       
+                      </div>
+                      <div class="col-sm-8" ng-hide="item.editing">
+                       <!--  <i class="icon-users"></i> --> <strong> Categoría: </strong>
+                        <span class="form-control-static" >{{item.categoria}}</span>
+                       
+                      </div>
+                      <div class=" col-sm-12" ng-hide="item.editing">
+                    <!-- <i class="icon-social-dropbox"></i>  --><strong> Departamento: </strong>
+                    <span class="form-control-static" >{{item.departamento}} 
+                    </span>  
+                  </div>
+
+                    </div> 
+                     <div class="row form-group col-sm-20" ng-hide="!item.departamento && !item.editing" ng-hide="item.editing">
+                  
+                
+                </div> 
+
+               <!--     <div class="row form-group col-sm-20" ng-hide="!item.departamento && !item.editing">              
+                    <div class="col-sm-12" ng-hide="item.editing">
+                      <i class="fa fa-dropbox"></i> <strong> Departamento: </strong>
+                        <span class="form-control-static" ng-hide="item.editing">{{item.fechaNacimiento|date:'dd/MM/yyyy'}} 
+                        </span> 
+                        <span class="form-control-static" ng-hide="item.editing">{{item.departamento}} 
+                        </span> 
+                    </div>
+                   </div> -->
+                    <div class="row form-group col-sm-20" ng-hide="!item.peso && !item.editing">              
+                    <div class="col-sm-12" ng-hide="item.editing">
+                      <i class="icon-speedometer"></i> <strong> Peso: </strong>
+                        <span class="form-control-static" ng-hide="item.editing">{{item.peso}} 
+                        </span> 
+                    </div>
+                   </div>
+
+                </div>
+                <div class="col  b-light row text-center no-gutter ">
+                  <div class="row">
+ <a href class="btn btn-rounded btn-lg btn-icon btn-info "
+ng-show="item.avatar && !item.editing"
+ > <i class="icon icon-eye  block m-b-xs fa-2x"></i></a>
+
+<!--  <div class="btn-group dropdown pull-right" dropdown ng-show="item.sexo && !item.editing">
+                      <button class="btn btn-success" dropdown-toggle tooltip="Opciones">
+                      <i class="fa fa-bars pull-right"></i> 
+                      <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                      <li><a href ng-click="consultar(item)">Ver historial</a></li>
+                      <li><a href >Ficha médica</a></li>
+                      <li><a href >Something else here</a></li>
+                      <li class="divider"></li>
+                      <li><a href>Separated link</a></li>
+                      </ul>
+                    </div> -->
+                   
+
+
+                  
+                  
+               
+                   
+                    </div> 
+               
+                 
+              
+                </div>
+  <div class="form-group" ng-show="!item.editing && item.sexo && item.control && !item.mensajeNuevo">
+                <!--     <label class="col-sm-6 control-label" ></label> -->
+                      <div class="col-sm-20">
+                     Secar<strong> / </strong> Ordeñar 
+                        <label  class="i-switch m-t-xs m-r"  popover="Cambiar entre ordeñar o secar a este articulo" popover-trigger="mouseenter" popover-placement="bottom">
+                        <input type="checkbox" ng-model="item.estado" ng-click="doneEditingEstado(item)">
+                        <i></i>
+                        </label>
+                       
+                      </div>
+                      <div class="col-sm-20" ng-hide="!categoriaValidado">
+                     Por preñar<strong> / </strong> Preñada 
+                        <label  class="i-switch bg-primary m-t-xs m-r"  popover="{{mensajePrenez}}" popover-trigger="mouseenter" popover-placement="bottom">
+                        <input type="checkbox" ng-model="item.prenez" ng-click="doneEditingPrenez(item)">
+                        <i></i>
+                        </label>
+                       
+                      </div>
+                    </div>
+              </div>
+              <div  class="m-b-md" ng-hide="!item">
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+       <!--  <button class='btn btn-default' ng-click="addAlert()">Add Alert</button> -->
+      </div>
+              <!-- fields -->
+ <!-- <div class="padder-v b-t b-light bg-light lter row text-center no-gutter" ng-show="item.editing"> -->
+            <div class="padder-v b-t b-light bg-light lter row" ng-show="item.editing">
+              <div class="row">
+                <div class="form-group col-md-6" ng-hide="!item.departamento && !item.editing">
+                    <div class="col-sm-10" ng-show="item.editing">
+                      <i class="icon-social-dropbox" ng-show="item.editing"></i> Departamento
+                      <ui-select ng-model="item.departamento" theme="bootstrap" ng-show="item.editing">
+                        <ui-select-match placeholder="Seleccione...">{{$select.selected.nombre}}</ui-select-match>
+                        <ui-select-choices group-by="'nombre'" repeat="item.nombre as item in departamentos | filter: $select.search">
+                          <span ng-bind-html="item.nombre | highlight: $select.search"></span>
+                         
+                        </ui-select-choices>
+                      </ui-select>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6" ng-hide="!item.stockMinimo && !item.editing">
+                    <div class="col-sm-10" ng-hide="!item.editing">Stock Minimo
+                    </div>
+                    <div class="row col-sm-6">
+                      <input type="number" placeholder="" class="form-control" ng-model="item.stockMinimo" min="1" >
+                    </div>
+                  </div>
+              </div>
+                
+              <div class="row">
+                  <div class="form-group col-md-6" ng-hide="!item.categoria && !item.editing">
+                  <div class="col-sm-10" ng-show="item.editing">
+                    <i class="icon-drawer "></i> Categoria
+                   
+                    <ui-select ng-model="item.categoria" theme="bootstrap" ng-show="item.editing">
+                      <ui-select-match placeholder="Seleccione...">{{$select.selected.nombre}}</ui-select-match>
+                      <ui-select-choices group-by="'nombre'" repeat="item.nombre as item in categorias | filter: $select.search">
+                        <span ng-bind-html="item.nombre | highlight: $select.search"></span>
+                       
+                      </ui-select-choices>
+                    </ui-select>
+                  </div>
+              </div> 
+            </div>
+
+              </div>
+
+
+              <div ng-show="item.categoria && !item.editing && !item.mensajeNuevo" >
+  
+                <div class="hbox text-center b-b b-light text-sm">  
+                                            <!--  <div class="row list-icon">
+      <div class="col-md-3 col-sm-4"> -->
+                  <a  href class="col padder-v text-muted b-r b-light" ng-click="openEntrada(item)">
+                    
+
+                    <i class="icon icon-arrow-down  block m-b-xs fa-3x" ></i>
+                    <span>Entradas</span>
+                  </a>
+                  <!-- </div>
+                    </div> -->
+                  
+                  <a href class="col padder-v text-muted b-r b-light" ng-click="openSalida(item)">
+                    <i class="icon icon-arrow-up  block m-b-xs fa-3x"></i>
+                    <span>Salidas</span>
+                  </a>
+                 
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+</div>
+
+<!-- /hbox layout

@@ -1,0 +1,34 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Datatable</h1>
+</div>
+<div class="wrapper-md" ng-controller="TablaArticuloesCtrl">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      DataTables {{saludo}}
+    </div>
+    <div class="table-responsive">
+      <table ui-jq="dataTable" ui-options="{
+          aaData: {{listado}},
+          aoColumns: [
+            { mData: 'barcode' },
+            { mData: 'nombre' },
+            { mData: 'grupo' },
+            { mData: 'raza' },
+            { mData: 'sexo' }
+          ]
+        }" class="table table-striped m-b-none">
+        <thead>
+          <tr>
+            <th  style="width:20%">barcode</th>
+            <th  style="width:25%">nombre</th>
+            <th  style="width:25%">Grupo</th>
+            <th  style="width:15%">Raza</th>
+            <th  style="width:15%">Sexo</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
