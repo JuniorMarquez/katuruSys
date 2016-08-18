@@ -99,7 +99,7 @@ module.exports.sockets = {
   * You can also pass along a ?cookie query parameter to the upgrade url,    *
   * which Sails will use in the absence of a proper cookie e.g. (when        *
   * connecting from the client):                                             *
-  * io.sails.connect('http://localhost:1337?cookie=smokeybear')              *
+  * io.sails.connect('http://localhost:1345?cookie=smokeybear')              *
   *                                                                          *
   * Finally note that the user's cookie is NOT (and will never be) accessible*
   * from client-side javascript. Using HTTP-only cookies is crucial for your *

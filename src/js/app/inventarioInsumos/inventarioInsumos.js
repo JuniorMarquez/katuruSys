@@ -2,20 +2,15 @@
 app.controller('InventarioCtrl', ['$scope', '$state','$http', '$filter', '$modal', 'MyService', 'filterFilter', 'toaster','$timeout',  function($scope,  $state ,$http, $filter,$modal, MyService, filterFilter, toaster,$timeout) {
  $scope.nivel=MyService.data.nivel;
   $scope.toaster = {
-    title: 'Exito',
-    type: 'success',
-    text: 'Articulo puesto en ordeño',
+    
 
-    type2: 'warning',      
-    text2: 'Articulo sacado de ordeño',
-    title2: 'Cuidado',
-
+    
     type3: 'info',
-    text3: 'El articulo ha sido borrado',
+    text3: 'El insumo ha sido borrado',
     title3: 'Información',
     
     type4: 'success',
-    text4: 'Articulo agregado con exito',
+    text4: 'Insumo agregado con exito',
     title4: 'Exito',
     
     type5: 'info',
