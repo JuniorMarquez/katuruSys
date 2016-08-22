@@ -347,37 +347,15 @@ if (typeof MyService.data.idEstablecimiento==="undefined"){
     
 
     };
-     var totalHembras=0;
- var totalMachos=0;
- var totalEnSalida=0;
- var totalSecas=0;
- var totalPrenadas=0;
- var totalNoPrenadas=0;
- var totalHembrasJovenes=0;
- var totalVacas=0;
-    $http.get('http://localhost:1345/articulo/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
-    $scope.articulos = resp.data.results;
-var numero = $scope.articulos.length;
+     
+    $http.get('http://localhost:1345/ingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
+    $scope.ingredientes = resp.data.results;
+var numero = $scope.ingredientes.length;
  $scope.total= numero;
- for (var i = 0;i<$scope.articulos.length;i++){
-    if ($scope.articulos[i].sexo=='Hembra'){totalHembras=totalHembras+1;}
-    if ($scope.articulos[i].sexo=='Hembra' &&  $scope.articulos[i].estado==true && $scope.articulos[i].categoria=='Vacas'){totalEnSalida=totalEnSalida+1;} 
-    if ($scope.articulos[i].sexo=='Hembra' &&  $scope.articulos[i].estado==false && $scope.articulos[i].categoria=='Vacas'){totalSecas=totalSecas+1;} 
-    if ($scope.articulos[i].sexo=='Hembra' && $scope.articulos[i].prenez==true){totalPrenadas=totalPrenadas+1;} 
-    if ($scope.articulos[i].sexo=='Hembra' &&  $scope.articulos[i].prenez==false){totalNoPrenadas=totalNoPrenadas+1};
-    if ($scope.articulos[i].sexo=='Hembra' && $scope.articulos[i].categoria=='Vacas'){totalVacas=totalVacas+1;} 
-    if ($scope.articulos[i].sexo=='Hembra' &&  $scope.articulos[i].categoria!='Vacas'){totalHembrasJovenes=totalHembrasJovenes+1};
-    if ($scope.articulos[i].sexo=='Macho'){totalMachos=totalMachos+1;} 
+ for (var i = 0;i<$scope.ingredientes.length;i++){
     
  }
- $scope.totalHembras=totalHembras;
- $scope.totalMachos=totalMachos;
- $scope.totalPrenadas=totalPrenadas;
- $scope.totalSecas=totalSecas;
- $scope.totalNoPrenadas=totalNoPrenadas;
- $scope.totalEnSalida=totalEnSalida;
- $scope.totalVacas=totalVacas;
- $scope.totalHembrasJovenes=totalHembrasJovenes;
+ 
   });
 
     

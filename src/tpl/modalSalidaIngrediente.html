@@ -1,0 +1,51 @@
+<div class="modal-header">
+    <h3 class="modal-title">Registrar salida</h3>
+</div>
+<div class="modal-body">
+Existencia actual: {{item.existenciaingredientes}} 
+{{item.equivalente}}
+    <!-- <ul>
+        <li ng-repeat="item in items">
+            <a ng-click="selected.item = item">{{ item }}</a>
+        </li>
+    </ul>
+    Selected: <b>{{ selected.item }}</b> -->
+
+     <!-- <input type="text" class="form-control" placeholder="fecha" ng-model="item.fecha" >  -->
+    
+     <div class="row" >
+    <div class="form-group">
+
+<div class="col-md-6">
+             Cantidad
+                <input placeholder="Kg."type="number" class="form-control" 
+               ng-model="item.cantidadSalida" 
+               id="cantidadSalida"   min="1" 
+               >
+             </div>
+              <div class="col-sm-6" >
+    <!--   </div>
+      <div class="col-sm-8" > -->
+    <!--     <p class="form-control-static" ng-hide="item.editing">{{item.raza}}</p> -->
+   <!-- <ui-select ng-model="item.unidad" theme="bootstrap" ng-change="calculoPrecioVenta()" > -->
+   Unidad
+        <ui-select ng-model="item.unidad" theme="bootstrap" >
+          <ui-select-match placeholder="..." >{{$select.selected.descripcion}}</ui-select-match>
+          <ui-select-choices group-by="'descripcion'" repeat="item.unidad as item in unidades | filter: $select.search">
+            <span ng-bind-html="item.descripcion | highlight: $select.search"></span>
+            <!-- <small ng-bind-html="item.email | highlight: $select.search"></small> -->
+          </ui-select-choices>
+        </ui-select>
+      </div>  
+
+             
+       
+         
+       
+      </div>
+</div>
+</div>
+<div class="modal-footer">                  
+    <button class="btn btn-default" ng-click="cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="okSalidaingrediente(item)">OK</button>
+</div>

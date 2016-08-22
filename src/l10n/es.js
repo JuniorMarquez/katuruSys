@@ -24,8 +24,8 @@
       "Inventario" : "Inventario",
       "Administrar" : "Administrar"
       },
-    "InventarioInsumos" : {
-      "Inventario" : "Insumos",
+    "InventarioIngredientes" : {
+      "Inventario" : "Ingredientes",
       "Administrar" : "Administrar"
       },
     "Nomina" : {

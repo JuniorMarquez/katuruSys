@@ -614,15 +614,15 @@ angular.module('app')
                   }
                  
               })
-.state('apps.inventarioInsumos', {
-                  url: '/inventarioInsumos',
-                  templateUrl: 'tpl/apps_inventarioInsumos.html',
+.state('apps.inventarioIngredientes', {
+                  url: '/inventarioIngredientes',
+                  templateUrl: 'tpl/apps_inventarioIngredientes.html',
                    resolve: {
                       deps: ['$ocLazyLoad',
                         function( $ocLazyLoad ){
                           return $ocLazyLoad.load(['ui.select','toaster']).then(
                               function(){
-                                return $ocLazyLoad.load( ['js/app/inventarioInsumos/inventarioInsumos.js',
+                                return $ocLazyLoad.load( ['js/app/inventarioIngredientes/inventarioIngredientes.js',
                                   'js/controllers/chart.js',
                                 'js/controllers/bootstrap.js'
                                                   ]);

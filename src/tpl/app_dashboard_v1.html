@@ -9,7 +9,7 @@
   <!-- main -->
   <div class="col">
     <!-- main header -->
-    <div class="bg-light lter b-b wrapper-md"ng-controller="FlotChartDemoCtrl">
+    <div class="bg-light lter b-b wrapper-md" ng-controller="FlotChartDemoCtrl">
      <!--  <div ng-controller="CarouselDemoCtrl" class="panel b-a" set-ng-animate="false">
         
         <carousel interval="myInterval">
@@ -55,13 +55,13 @@
         <div class="col-md-5">
           <div class="row row-sm text-center">
           <div class="col-xs-12 m-b-md">
-             <a ng-show="{{app.tipoEstablecimiento=='8'}}"href ui-sref="apps.inventarioInsumos" popover="Click para administrar el inventario" popover-trigger="mouseenter" popover-placement="bottom" ng-show="{{app.nivel == '1'}}">
+             <a ng-show="{{app.tipoEstablecimiento=='8'}}"href ui-sref="apps.inventarioIngredientes" popover="Click para administrar el inventario" popover-trigger="mouseenter" popover-placement="bottom" ng-show="{{app.nivel == '1'}}">
               <div class="r bg-primary dker item hbox no-border">
                 <div class="col w-xs v-middle hidden-md">
                   <div ng-init="data1=[60,40]" ui-jq="sparkline" ui-options="{{data1}}, {type:'pie', height:40, sliceColors:['{{app.color.warning}}','#fff']}" class="sparkline inline"></div>
                 </div>
                 <div class="col dk padder-v r-r" >
-                  <div class="text-light-dk font-thin h1"><span>{{total}} Insumos </span></div>
+                  <div class="text-light-dk font-thin h1"><span>{{total}} ingredientes </span></div>
                   <span class="text-muted text-xs">Distribuidos en {{totalCategorias}} categorías</span>
                 </div>
               </div>

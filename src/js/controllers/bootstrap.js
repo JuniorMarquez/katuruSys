@@ -113,32 +113,32 @@ $scope.filter = '';
       data: []                                             
     };
 
-$scope.calculoExistenciaInsumos2=function(item){
-    var entradasInsumos=0;
-    var salidasInsumos=0;
-    var existenciaInsumos=0;
-    var idInsumo=item;
+$scope.calculoExistenciaingredientes2=function(item){
+    var entradasingredientes=0;
+    var salidasingredientes=0;
+    var existenciaingredientes=0;
+    var idingrediente=item;
     
-    $http.get('http://localhost:1345/entradaInsumo/?idInsumo='+idInsumo).then(function (resp) {
-      $scope.entradasInsumos=resp.data.results;
-      for (var i=0;i<$scope.entradasInsumos.length;i++){
-        entradasInsumos=entradasInsumos+$scope.entradasInsumos[i].cantidad;
+    $http.get('http://localhost:1345/entradaingrediente/?idingrediente='+idingrediente).then(function (resp) {
+      $scope.entradasingredientes=resp.data.results;
+      for (var i=0;i<$scope.entradasingredientes.length;i++){
+        entradasingredientes=entradasingredientes+$scope.entradasingredientes[i].cantidad;
         }
-        $http.get('http://localhost:1345/salidaInsumo/?idInsumo='+idInsumo).then(function (resp) {
-          $scope.salidasInsumos = resp.data.results;
-          for (var i=0;i<$scope.salidasInsumos.length;i++){
-            salidasInsumos=salidasInsumos+$scope.salidasInsumos[i].cantidad;
+        $http.get('http://localhost:1345/salidaingrediente/?idingrediente='+idingrediente).then(function (resp) {
+          $scope.salidasingredientes = resp.data.results;
+          for (var i=0;i<$scope.salidasingredientes.length;i++){
+            salidasingredientes=salidasingredientes+$scope.salidasingredientes[i].cantidad;
             }
-        existenciaInsumos = entradasInsumos-salidasInsumos;
-       var equivalente = existenciaInsumos/1000;
+        existenciaingredientes = entradasingredientes-salidasingredientes;
+       var equivalente = existenciaingredientes/1000;
        equivalente = " g. ( "+equivalente+" Kg.)";
 
        $scope.item.equivalente = equivalente;
-        $scope.item.existenciaInsumos=existenciaInsumos; 
+        $scope.item.existenciaingredientes=existenciaingredientes; 
       });
     });      
   };
-$scope.calculoExistenciaInsumos2(MyService.data.identificador);
+$scope.calculoExistenciaingredientes2(MyService.data.identificador);
 
 $scope.calculoPrecioVenta=function(){
   $scope.item.ganancia=$scope.item.precioCosto*$scope.item.porcentajeganancia/100;
@@ -148,7 +148,7 @@ $scope.calculoPrecioVenta=function(){
 $http.get('http://localhost:1345/porcentajeganancia/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp2) {
     $scope.porcentajes = resp2.data.results;  
 });
-$http.get('http://localhost:1345/unidadinsumo/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp2) {
+$http.get('http://localhost:1345/unidadingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp2) {
     $scope.unidades = resp2.data.results;  
 });
 
@@ -366,6 +366,8 @@ $scope.borrarTipoMedicamento=function(item){
 
 
     $scope.mensajeBorrado="Al borrar este articulo, se perderá de manera definitiva toda la información referente al mismo, está seguro de querer borrarlo?";
+    $scope.mensajeBorradoingrediente="Al borrar este ingrediente, se perderá de manera definitiva toda la información referente al mismo, está seguro de querer borrarlo?";
+   
     //  $http.get('http://localhost:1345/raza/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
     //   $scope.razas = resp.data.results;
     // });
@@ -382,27 +384,27 @@ $scope.borrarTipoMedicamento=function(item){
       //   return (ordeno.idArticulo == pas );
       // });
     };
-$scope.calculoExistenciaInsumos=function(idInsumo){
-    var entradasInsumos=0;
-    var salidasInsumos=0;
-    var existenciaInsumos=0;
+$scope.calculoExistenciaingredientes=function(idingrediente){
+    var entradasingredientes=0;
+    var salidasingredientes=0;
+    var existenciaingredientes=0;
     
-    $http.get('http://localhost:1345/entradaInsumo/?idInsumo='+idInsumo).then(function (resp) {
-      $scope.entradasInsumos=resp.data.results;
-      for (var i=0;i<$scope.entradasInsumos.length;i++){
-        entradasInsumos=entradasInsumos+$scope.entradasInsumos[i].cantidad;
+    $http.get('http://localhost:1345/entradaingrediente/?idingrediente='+idingrediente).then(function (resp) {
+      $scope.entradasingredientes=resp.data.results;
+      for (var i=0;i<$scope.entradasingredientes.length;i++){
+        entradasingredientes=entradasingredientes+$scope.entradasingredientes[i].cantidad;
         }
-        $http.get('http://localhost:1345/salidaInsumo/?idInsumo='+idInsumo).then(function (resp) {
-          $scope.salidasInsumos = resp.data.results;
-          for (var i=0;i<$scope.salidasInsumos.length;i++){
-            salidasInsumos=salidasInsumos+$scope.salidasInsumos[i].cantidad;
+        $http.get('http://localhost:1345/salidaingrediente/?idingrediente='+idingrediente).then(function (resp) {
+          $scope.salidasingredientes = resp.data.results;
+          for (var i=0;i<$scope.salidasingredientes.length;i++){
+            salidasingredientes=salidasingredientes+$scope.salidasingredientes[i].cantidad;
             }
-        existenciaInsumos = entradasInsumos-salidasInsumos;
-       var equivalente = existenciaInsumos/1000;
+        existenciaingredientes = entradasingredientes-salidasingredientes;
+       var equivalente = existenciaingredientes/1000;
        equivalente = " g. ( "+equivalente+" Kg.)";
 
        $scope.item.equivalente = equivalente;
-        $scope.item.existenciaInsumos=existenciaInsumos; 
+        $scope.item.existenciaingredientes=existenciaingredientes; 
       });
     }); 
     $scope.validador($scope.item);      
@@ -411,9 +413,9 @@ $scope.calculoExistenciaInsumos=function(idInsumo){
   $scope.validador=function(item){
   var validador=item.stockMinimo*1000;
   $scope.alerts=null;
-    if(item.existenciaInsumos<validador){
+    if(item.existenciaingredientes<validador){
       $scope.alerts = [
-      { type: 'danger', msg: 'La disponibilidad de este insumo se encuentra por debajo del stock minimo definido' }        ];
+      { type: 'danger', msg: 'La disponibilidad de este ingrediente se encuentra por debajo del stock minimo definido' }        ];
     };
   };
      $scope.calculoExistencia=function(idArticulo){
@@ -449,21 +451,21 @@ $scope.calculoExistenciaInsumos=function(idInsumo){
       //   return (ordeno.idArticulo == pas );
       // });
     };
- $scope.okEntradaInsumo = function (item) {
-      var idInsumo=MyService.data.identificador;
-      item.idInsumo=idInsumo;
+ $scope.okEntradaingrediente = function (item) {
+      var idingrediente=MyService.data.identificador;
+      item.idingrediente=idingrediente;
 
       var cantidad = parseInt(item.cantidadIngreso)*parseInt(item.unidad)
       item.cantidad=cantidad;
       item.idUsuario=MyService.data.idUsuario;
 
        item.idEstablecimiento=MyService.data.idEstablecimiento;
-      $http.post('http://localhost:1345/entradaInsumo/' ,item);  
+      $http.post('http://localhost:1345/entradaingrediente/' ,item);  
       $modalInstance.close();
-      $scope.calculoExistenciaInsumos(idInsumo);
+      $scope.calculoExistenciaingredientes(idingrediente);
       // var pas = item._id;
       // $scope.ordenosFiltrados = $scope.ordenos.filter(function (ordeno) {
-      //   return (ordeno.idInsumo == pas );
+      //   return (ordeno.idingrediente == pas );
       // });
     };
 
@@ -543,25 +545,25 @@ $scope.calculoExistenciaInsumos=function(idInsumo){
       item.idEntrada=MyService.data.idEntrada;
       $http.post('http://localhost:1345/salida/' ,item);  
       $modalInstance.close();
-      $scope.calculoExistenciaInsumos(idArticulo);
+      $scope.calculoExistenciaingredientes(idArticulo);
       // var pas = item._id;
       // $scope.ordenosFiltrados = $scope.ordenos.filter(function (ordeno) {
       //   return (ordeno.idArticulo == pas );
       // });
     };
-     $scope.okSalidaInsumo = function (item) {
-      var idInsumo=MyService.data.identificador;
+     $scope.okSalidaingrediente = function (item) {
+      var idingrediente=MyService.data.identificador;
      
-      item.idInsumo=idInsumo;
+      item.idingrediente=idingrediente;
        item.idEstablecimiento=MyService.data.idEstablecimiento;
       item.idUsuario=MyService.data.idUsuario;
         var cantidad = parseInt(item.cantidadSalida)*parseInt(item.unidad);
       item.cantidadSalida=cantidadSalida;
       item.cantidad=cantidad;
-      item.idEntradaInsumo=MyService.data.idEntradaInsumo;
-      $http.post('http://localhost:1345/salidaInsumo/' ,item);  
+      item.idEntradaingrediente=MyService.data.idEntradaingrediente;
+      $http.post('http://localhost:1345/salidaingrediente/' ,item);  
       $modalInstance.close();
-      $scope.calculoExistenciaInsumos(idInsumo);
+      $scope.calculoExistenciaingredientes(idingrediente);
       // var pas = item._id;
       // $scope.ordenosFiltrados = $scope.ordenos.filter(function (ordeno) {
       //   return (ordeno.idArticulo == pas );
@@ -766,6 +768,15 @@ $scope.okSucursal = function (item) {
       $scope.items = null;
       $scope.item = null;
       $scope.articulos = null;  
+      $modalInstance.close();
+    };
+    $scope.okConfirmingrediente = function (item) { 
+      var idingrediente=MyService.data.identificador;
+      $http.delete('http://localhost:1345/ingrediente/'+idingrediente , item)
+      // $scope.items.splice($scope.items.indexOf(item), 1);
+      $scope.items = null;
+      $scope.item = null;
+      $scope.ingredientes = null;  
       $modalInstance.close();
     };
 

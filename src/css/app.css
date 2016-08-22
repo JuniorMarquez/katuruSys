@@ -4842,6 +4842,9 @@ a.text-#000000:hover {
 .w-sm {
   width: 150px;
 }
+.w-sm2 {
+  width: 250px;
+}
 
 .w {
   width: 143px;
@@ -4853,6 +4856,9 @@ a.text-#000000:hover {
 
 .w-lg {
   width: 250px;
+}
+.w-lg2 {
+  width: 150px;
 }
 .entrada{
   padding-top: 5%;

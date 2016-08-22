@@ -28,7 +28,7 @@
       "Nomina" : "Nomina",
        "Listado" : "List"
       },
-    "InventarioInsumos" : {
+    "InventarioIngredientes" : {
       "Inventario" : "Ingredients",
       "Administrar" : "Manage"
       },
