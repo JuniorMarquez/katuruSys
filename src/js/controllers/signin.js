@@ -64,7 +64,7 @@ app.controller('SigninFormController', ['$scope', '$filter','$http', '$state', '
      $scope.app.nombre=item.nombre;
 
       // $scope.pop4();
-      $http.put('http://localhost:1345/userkaturu/'+MyService.data.idUsuario , usuarioAct)
+      $http.put('http://52.33.127.122:1345/userkaturu/'+MyService.data.idUsuario , usuarioAct)
     
 MyService.data.datos=item;
     // $scope.items = null;
@@ -76,7 +76,7 @@ MyService.data.datos=item;
    
     $scope.cargaTiposEstablecimiento=function(){
 
-    $http.get('http://localhost:1345/tipoestablecimiento').then(function (resp) {
+    $http.get('http://52.33.127.122:1345/tipoestablecimiento').then(function (resp) {
       $scope.tiposEstablecimiento = resp.data.results;
       
       
@@ -90,7 +90,7 @@ $scope.cargaTiposEstablecimiento();
     $scope.login = function() {
       $scope.authError = null;
       // Try to login
-       $http.get('http://localhost:1345/userkaturu/?email=' +$scope.user.email).success(function(respuesta){
+       $http.get('http://52.33.127.122:1345/userkaturu/?email=' +$scope.user.email).success(function(respuesta){
                 // if ($scope.email=== 'undefined'){$scope.mensaje="usuario no registrado"}
                      // if (vm.dato !== vm.login.usuario){vm.login.mensaje="usuario no registrado"}
                 $scope.datos = respuesta.results[0];

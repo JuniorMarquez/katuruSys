@@ -70,7 +70,7 @@ app.controller('InventarioCtrl', ['$scope', '$state','$http', '$filter', '$modal
   $scope.format = 'shortDate';
 
   $scope.carga = function (){
-    $http.get('http://localhost:1345/categoria/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/categoria/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
       $scope.categorias = resp.data.results;
     });
   };
@@ -83,7 +83,7 @@ MyService.data.luz=null;
     $scope.categoria = item;
     // $scope.categoria.selected = true;
     $scope.filter = item.nombre;
-    $http.get('http://localhost:1345/ingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/ingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
       $scope.items = resp.data.results;
       // $scope.item = null;  
       // $scope.item.selected = true;
@@ -92,7 +92,7 @@ MyService.data.luz=null;
   };
 $scope.selectItem2 = function(item){  
 
-     $http.get('http://localhost:1345/ingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
+     $http.get('http://52.33.127.122:1345/ingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
       $scope.items = resp.data.results;
       // $scope.item = null;  
       // $scope.item.selected = true;
@@ -131,7 +131,7 @@ $scope.selectItem2 = function(item){
     }
 
     $scope.item.selected = true;
-    $http.get('http://localhost:1345/ingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/ingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
       $scope.ingredientes = resp.data.results;
     });
       
@@ -162,7 +162,7 @@ $scope.selectItem2 = function(item){
   // };
  
   
-  $http.get('http://localhost:1345/categoria/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
+  $http.get('http://52.33.127.122:1345/categoria/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
     $scope.categorias = resp.data.results;
   });
 
@@ -215,15 +215,15 @@ $scope.selectItem2 = function(item){
     }
   };
   $scope.carga = function(){
-    $http.get('http://localhost:1345/categoria/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/categoria/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
       $scope.categorias = resp.data.results;
     });
   };
-  $http.get('http://localhost:1345/departamento/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
+  $http.get('http://52.33.127.122:1345/departamento/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
       $scope.departamentos = resp.data.results;
     });
  $scope.cargaingredientes = function(){
-      $http.get('http://localhost:1345/ingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
+      $http.get('http://52.33.127.122:1345/ingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
         $scope.ingredientes = resp.data.results;
       });
     };
@@ -568,7 +568,7 @@ $scope.openPeso = function (item) {
   };
 
   $scope.deleteCategoria = function(item){
-    $http.delete('http://localhost:1345/categoria/'+item.id , item)
+    $http.delete('http://52.33.127.122:1345/categoria/'+item.id , item)
     $scope.categorias.splice($scope.categorias.indexOf(item), 1);
   };
 
@@ -580,7 +580,7 @@ $scope.openPeso = function (item) {
     $scope.categoria = item;
     $scope.categoria.selected = true;
     $scope.filter = item.nombre;
-    $http.get('http://localhost:1345/ingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/ingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
       $scope.items = resp.data.results;
       $scope.item = null;  
       // $scope.item.selected = true;
@@ -591,12 +591,12 @@ $scope.openPeso = function (item) {
     var salidas=0;
     var existencia=0;
     
-    $http.get('http://localhost:1345/entrada/?idingrediente='+idingrediente).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/entrada/?idingrediente='+idingrediente).then(function (resp) {
       $scope.entradas=resp.data.results;
       for (var i=0;i<$scope.entradas.length;i++){
         entradas=entradas+$scope.entradas[i].cantidad;
         }
-        $http.get('http://localhost:1345/salida/?idingrediente='+idingrediente).then(function (resp) {
+        $http.get('http://52.33.127.122:1345/salida/?idingrediente='+idingrediente).then(function (resp) {
           $scope.salidas = resp.data.results;
           for (var i=0;i<$scope.salidas.length;i++){
             salidas=salidas+$scope.salidas[i].cantidad;
@@ -611,12 +611,12 @@ $scope.openPeso = function (item) {
     var salidasingredientes=0;
     var existenciaingredientes=0;
     
-    $http.get('http://localhost:1345/entradaingrediente/?idingrediente='+idingrediente).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/entradaingrediente/?idingrediente='+idingrediente).then(function (resp) {
       $scope.entradasingredientes=resp.data.results;
       for (var i=0;i<$scope.entradasingredientes.length;i++){
         entradasingredientes=entradasingredientes+$scope.entradasingredientes[i].cantidad;
         }
-        $http.get('http://localhost:1345/salidaingrediente/?idingrediente='+idingrediente).then(function (resp) {
+        $http.get('http://52.33.127.122:1345/salidaingrediente/?idingrediente='+idingrediente).then(function (resp) {
           $scope.salidasingredientes = resp.data.results;
           for (var i=0;i<$scope.salidasingredientes.length;i++){
             salidasingredientes=salidasingredientes+$scope.salidasingredientes[i].cantidad;
@@ -657,7 +657,7 @@ $scope.openPeso = function (item) {
     $scope.calculoExistenciaingredientes(identificador);
     $scope.item = item;
     $scope.item.selected = true;
-    $http.get('http://localhost:1345/ingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/ingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
       $scope.ingredientes = resp.data.results;
       });
      var pas = item.id;
@@ -671,14 +671,14 @@ $scope.openPeso = function (item) {
   
 
   $scope.deleteItem = function(item){
-    $http.delete('http://localhost:1345/ingrediente/'+item.id , item)
+    $http.delete('http://52.33.127.122:1345/ingrediente/'+item.id , item)
     $scope.items.splice($scope.items.indexOf(item), 1);
     $scope.item = $filter('orderBy')($scope.items, 'nombre')[0];
     if($scope.item) $scope.item.selected = true;
   };
 
   $scope.deleteingrediente = function(ingrediente){
-    $http.delete('http://localhost:1345/ingrediente/'+ingrediente.id , ingrediente)
+    $http.delete('http://52.33.127.122:1345/ingrediente/'+ingrediente.id , ingrediente)
     $scope.ingredientesFiltrados.splice($scope.ingredientes.indexOf(ingrediente), 1);
     $scope.ingrediente = $filter('orderBy')($scope.ingredientes, 'nombre')[0];
     if($scope.ingrediente) $scope.ingrediente.selected = true;
@@ -697,7 +697,7 @@ $scope.openPeso = function (item) {
     $scope.item.mensajeNuevo=null;
     $scope.item.idEstablecimiento = MyService.data.idEstablecimiento;
     $scope.item.idUsuario = MyService.data.idUsuario;
-    $http.get('http://localhost:1345/categoria/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/categoria/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
     $scope.categorias = resp.data.results;
     }); 
   };
@@ -721,12 +721,12 @@ $scope.openPeso = function (item) {
     categoriaAct.selected=item.selected;
     categoriaAct.editing=item.editing;
     if (MyService.data.idenCategoria){
-      $http.put('http://localhost:1345/categoria/'+MyService.data.idenCategoria, categoriaAct)
+      $http.put('http://52.33.127.122:1345/categoria/'+MyService.data.idenCategoria, categoriaAct)
     }
     else {
-      $http.post('http://localhost:1345/categoria/', categoriaAct)
+      $http.post('http://52.33.127.122:1345/categoria/', categoriaAct)
     }
-    // $http.get('http://localhost:1345/categoria/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
+    // $http.get('http://52.33.127.122:1345/categoria/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
     //   $scope.categorias = resp.data.results;
     // });
     $scope.items = null;
@@ -760,16 +760,16 @@ $scope.openPeso = function (item) {
    
     if (MyService.data.ideningrediente){
       $scope.pop4();
-      $http.put('http://localhost:1345/ingrediente/'+MyService.data.ideningrediente , ingredienteAct)
+      $http.put('http://52.33.127.122:1345/ingrediente/'+MyService.data.ideningrediente , ingredienteAct)
     }
     else {
       $scope.pop3();;
-      $http.post('http://localhost:1345/ingrediente/', ingredienteAct)
+      $http.post('http://52.33.127.122:1345/ingrediente/', ingredienteAct)
     }
-    $http.get('http://localhost:1345/categoria/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/categoria/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
       $scope.categorias = resp.data.results;
     });
-    $http.get('http://localhost:1345/ingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/ingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
       $scope.app.states = resp.data.results;
     });
     // $scope.items = null;

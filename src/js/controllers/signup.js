@@ -15,11 +15,11 @@ app.controller('SignupFormController', ['$scope', '$filter','$http', '$state','M
     $scope.datos=[];
     $scope.establecimientos={};
     $scope.createEstablecimiento = function(user){
-       $http.post('http://localhost:1345/establecimiento/', {administrador: $scope.user.nombre, emailAdministrador: $scope.user.email});
+       $http.post('http://52.33.127.122:1345/establecimiento/', {administrador: $scope.user.nombre, emailAdministrador: $scope.user.email});
     };
 
     $scope.entrar = function(user) {
-      $http.get('http://localhost:1345/userkaturu/?email=' +$scope.user.email).success(function(respuesta){
+      $http.get('http://52.33.127.122:1345/userkaturu/?email=' +$scope.user.email).success(function(respuesta){
         $scope.datos = respuesta.results[0];
         MyService.data.datos=$scope.datos;
       });
@@ -36,22 +36,22 @@ app.controller('SignupFormController', ['$scope', '$filter','$http', '$state','M
     $scope.ok = function(user) {
       $scope.createEstablecimiento(user);
       setTimeout(function() {
-        $http.get('http://localhost:1345/establecimiento/?emailAdministrador='+$scope.user.email).then(function (resp) {
+        $http.get('http://52.33.127.122:1345/establecimiento/?emailAdministrador='+$scope.user.email).then(function (resp) {
         $scope.establecimientos = resp.data.results;
         $scope.user.idEstablecimiento=($scope.establecimientos[$scope.establecimientos.length-1]).id;
         MyService.data.idEstablecimiento=$scope.user.idEstablecimiento;
-        $http.post('http://localhost:1345/userkaturu/', {nombre: $scope.user.nombre, email: $scope.user.email, password: $scope.user.password,
+        $http.post('http://52.33.127.122:1345/userkaturu/', {nombre: $scope.user.nombre, email: $scope.user.email, password: $scope.user.password,
           idEstablecimiento: MyService.data.idEstablecimiento,
           nivel:1,
           });
         });
       }, 1000);
       
-    //   $http.get('http://localhost:1345/establecimiento/').then(function (resp) {
+    //   $http.get('http://52.33.127.122:1345/establecimiento/').then(function (resp) {
     //   $scope.establecimientos = resp.data.results;
     //   $scope.user.idEstablecimiento=($scope.establecimientos[$scope.establecimientos.length-1]).id;
     //   MyService.data.idEstablecimiento=$scope.user.idEstablecimiento;
-    //   $http.post('http://localhost:1345/userkaturu/', {nombre: $scope.user.nombre, email: $scope.user.email, password: $scope.user.password,
+    //   $http.post('http://52.33.127.122:1345/userkaturu/', {nombre: $scope.user.nombre, email: $scope.user.email, password: $scope.user.password,
     //     idEstablecimiento: MyService.data.idEstablecimiento,
     //     nivel:1,
     //   });

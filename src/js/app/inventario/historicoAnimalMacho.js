@@ -99,7 +99,7 @@ app.controller('historicoArticuloMachoCtrl', ['$scope', '$http', '$filter', '$mo
     };
     $scope.getPesos = function () {
       $scope.pesos=null;
-      $http.get('http://localhost:1345/peso/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
+      $http.get('http://52.33.127.122:1345/peso/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
         $scope.pesos = resp.data.results;
         var bandera="";
         var bandera2="";
@@ -142,7 +142,7 @@ app.controller('historicoArticuloMachoCtrl', ['$scope', '$http', '$filter', '$mo
 $scope.getPesos();
     $scope.getEntradas = function () {
       $scope.tratamientos=null;
-      $http.get('http://localhost:1345/tratamiento/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
+      $http.get('http://52.33.127.122:1345/tratamiento/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
         $scope.tratamientos = resp.data.results;
         var bandera="";
         var bandera2="";
@@ -189,7 +189,7 @@ $scope.getPesos();
  
     $scope.getDepartamentos = function () {
       $scope.departamentos=null;
-      $http.get('http://localhost:1345/sumdepartamento/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
+      $http.get('http://52.33.127.122:1345/sumdepartamento/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
         $scope.departamentos = resp.data.results;
         var bandera="";
         var bandera2="";
@@ -234,7 +234,7 @@ $scope.getPesos();
 
     $scope.getMedicamentos = function () {
       $scope.medicamentos=null;
-      $http.get('http://localhost:1345/summedicamento/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
+      $http.get('http://52.33.127.122:1345/summedicamento/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
         $scope.medicamentos = resp.data.results;
         var bandera="";
         var bandera2="";
@@ -279,7 +279,7 @@ $scope.getPesos();
 
 $scope.getAlimentos = function () {
       $scope.alimentos=null;
-      $http.get('http://localhost:1345/sumalimento/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
+      $http.get('http://52.33.127.122:1345/sumalimento/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
         $scope.alimentos = resp.data.results;
         var bandera="";
         var bandera2="";
@@ -325,7 +325,7 @@ $scope.getAlimentos();
 
     $scope.getSaltos = function () {
       $scope.saltos=null;
-      $http.get('http://localhost:1345/salto/?macho.id='+MyService.data.articuloConsultado.id).then(function (resp) {
+      $http.get('http://52.33.127.122:1345/salto/?macho.id='+MyService.data.articuloConsultado.id).then(function (resp) {
         $scope.saltos = resp.data.results;
         var bandera="";
         var bandera2="";
@@ -369,7 +369,7 @@ $scope.getAlimentos();
 
     $scope.getEntradas2 = function () {
       $scope.tratamientosSegundo=null;
-      $http.get('http://localhost:1345/tratamiento/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
+      $http.get('http://52.33.127.122:1345/tratamiento/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
         $scope.tratamientosSegundo = resp.data.results;  
         var bandera="";
         var bandera2="";
@@ -401,7 +401,7 @@ $scope.getAlimentos();
     };
     $scope.getMedicamentos2 = function () {
       $scope.medicamentosSegundo=null;
-      $http.get('http://localhost:1345/summedicamento/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
+      $http.get('http://52.33.127.122:1345/summedicamento/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
         $scope.medicamentosSegundo = resp.data.results;  
         var bandera="";
         var bandera2="";
@@ -436,7 +436,7 @@ $scope.getAlimentos();
 
        $scope.getAlimentos2 = function () {
       $scope.alimentosSegundo=null;
-      $http.get('http://localhost:1345/sumalimento/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
+      $http.get('http://52.33.127.122:1345/sumalimento/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
         $scope.alimentosSegundo = resp.data.results;  
         var bandera="";
         var bandera2="";
@@ -469,7 +469,7 @@ $scope.getAlimentos();
 
     $scope.getSaltos2 = function () {
       $scope.saltosSegundo=null;
-      $http.get('http://localhost:1345/salto/?macho.id='+MyService.data.articuloConsultado.id).then(function (resp) {
+      $http.get('http://52.33.127.122:1345/salto/?macho.id='+MyService.data.articuloConsultado.id).then(function (resp) {
         $scope.saltosSegundo = resp.data.results;  
         var bandera="";
         var bandera2="";
@@ -501,7 +501,7 @@ $scope.getAlimentos();
     };
     $scope.getPesos2 = function () {
     $scope.pesosSegundo=null;
-    $http.get('http://localhost:1345/peso/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/peso/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
       $scope.pesosSegundo = resp.data.results;  
       var bandera="";
       var bandera2="";
@@ -536,7 +536,7 @@ $scope.getAlimentos();
 
     $scope.getDepartamentos2 = function () {
     $scope.departamentosSegundo=null;
-    $http.get('http://localhost:1345/sumdepartamento/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/sumdepartamento/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
       $scope.departamentosSegundo = resp.data.results;  
       var bandera="";
       var bandera2="";

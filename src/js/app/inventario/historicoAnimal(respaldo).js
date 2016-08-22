@@ -13,7 +13,7 @@ app.controller('historicoArticuloCtrl', ['$scope', '$http', '$filter', '$modal',
 $scope.getSalidas = function () {
 
   $scope.ordenos=null;
-  $http.get('http://localhost:1345/ordeno/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
+  $http.get('http://52.33.127.122:1345/ordeno/?idArticulo='+MyService.data.articuloConsultado.id).then(function (resp) {
     $scope.ordenos = resp.data.results;
     
     // MyService.data.ordenos=resp.data.results;

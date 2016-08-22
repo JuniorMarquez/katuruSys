@@ -119,12 +119,12 @@ $scope.calculoExistenciaingredientes2=function(item){
     var existenciaingredientes=0;
     var idingrediente=item;
     
-    $http.get('http://localhost:1345/entradaingrediente/?idingrediente='+idingrediente).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/entradaingrediente/?idingrediente='+idingrediente).then(function (resp) {
       $scope.entradasingredientes=resp.data.results;
       for (var i=0;i<$scope.entradasingredientes.length;i++){
         entradasingredientes=entradasingredientes+$scope.entradasingredientes[i].cantidad;
         }
-        $http.get('http://localhost:1345/salidaingrediente/?idingrediente='+idingrediente).then(function (resp) {
+        $http.get('http://52.33.127.122:1345/salidaingrediente/?idingrediente='+idingrediente).then(function (resp) {
           $scope.salidasingredientes = resp.data.results;
           for (var i=0;i<$scope.salidasingredientes.length;i++){
             salidasingredientes=salidasingredientes+$scope.salidasingredientes[i].cantidad;
@@ -145,16 +145,16 @@ $scope.calculoPrecioVenta=function(){
   $scope.item.precioVenta=$scope.item.precioCosto+$scope.item.ganancia;
 };
 
-$http.get('http://localhost:1345/porcentajeganancia/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp2) {
+$http.get('http://52.33.127.122:1345/porcentajeganancia/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp2) {
     $scope.porcentajes = resp2.data.results;  
 });
-$http.get('http://localhost:1345/unidadingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp2) {
+$http.get('http://52.33.127.122:1345/unidadingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp2) {
     $scope.unidades = resp2.data.results;  
 });
 
 
 
-$http.get('http://localhost:1345/departamento/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp2) {
+$http.get('http://52.33.127.122:1345/departamento/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp2) {
     var bandera="";
     var bandera2="";
     $scope.departamentos = resp2.data.results;
@@ -190,7 +190,7 @@ $http.get('http://localhost:1345/departamento/?idEstablecimiento='+MyService.dat
 });
 
 
-// $http.get('http://localhost:1345/alimento/?idUsuario='+MyService.data.idUsuario).then(function (resp2) {
+// $http.get('http://52.33.127.122:1345/alimento/?idUsuario='+MyService.data.idUsuario).then(function (resp2) {
 //     var bandera="";
 //     var bandera2="";
 //     $scope.alimentos = resp2.data.results;
@@ -203,7 +203,7 @@ $http.get('http://localhost:1345/departamento/?idEstablecimiento='+MyService.dat
 //     $scope.alimentos=$scope.alimentos.reverse();
    
 // });
-// $http.get('http://localhost:1345/tipoDepartamento/?idUsuario='+MyService.data.idUsuario).then(function (resp2) {
+// $http.get('http://52.33.127.122:1345/tipoDepartamento/?idUsuario='+MyService.data.idUsuario).then(function (resp2) {
 //     var bandera="";
 //     var bandera2="";
 //     $scope.tiposDepartamentos = resp2.data.results;
@@ -216,7 +216,7 @@ $http.get('http://localhost:1345/departamento/?idEstablecimiento='+MyService.dat
 //     $scope.tiposDepartamentos=$scope.tiposDepartamentos.reverse();
    
 // });
-// $http.get('http://localhost:1345/tipoAlimento/?idUsuario='+MyService.data.idUsuario).then(function (resp2) {
+// $http.get('http://52.33.127.122:1345/tipoAlimento/?idUsuario='+MyService.data.idUsuario).then(function (resp2) {
 //     var bandera="";
 //     var bandera2="";
 //     $scope.tiposAlimentos = resp2.data.results;
@@ -229,7 +229,7 @@ $http.get('http://localhost:1345/departamento/?idEstablecimiento='+MyService.dat
 //     $scope.tiposAlimentos=$scope.tiposAlimentos.reverse();
    
 // });
-// $http.get('http://localhost:1345/tipoMedicamento/?idUsuario='+MyService.data.idUsuario).then(function (resp2) {
+// $http.get('http://52.33.127.122:1345/tipoMedicamento/?idUsuario='+MyService.data.idUsuario).then(function (resp2) {
 //     var bandera="";
 //     var bandera2="";
 //     $scope.tiposMedicamentos = resp2.data.results;
@@ -243,7 +243,7 @@ $http.get('http://localhost:1345/departamento/?idEstablecimiento='+MyService.dat
    
 // });
 
-$http.get('http://localhost:1345/sucursal/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp2) {
+$http.get('http://52.33.127.122:1345/sucursal/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp2) {
     var bandera="";
     var bandera2="";
     $scope.sucursales = resp2.data.results;
@@ -257,7 +257,7 @@ $http.get('http://localhost:1345/sucursal/?idEstablecimiento='+MyService.data.id
    
 });
 
-$http.get('http://localhost:1345/departamento/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp2) {
+$http.get('http://52.33.127.122:1345/departamento/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp2) {
     var bandera="";
     var bandera2="";
     $scope.departamentos = resp2.data.results;
@@ -276,37 +276,37 @@ $http.get('http://localhost:1345/departamento/?idEstablecimiento='+MyService.dat
     
 $scope.borrar=function(item){
    var idRaza=item.id;
-      $http.delete('http://localhost:1345/raza/'+idRaza , item)
+      $http.delete('http://52.33.127.122:1345/raza/'+idRaza , item)
       $modalInstance.dismiss('cancel');
 };
 $scope.borrarAlimento=function(item){
    var idAlimento=item.id;
-      $http.delete('http://localhost:1345/alimento/'+idAlimento , item)
+      $http.delete('http://52.33.127.122:1345/alimento/'+idAlimento , item)
       $modalInstance.dismiss('cancel');
 };
 $scope.borrarSucursal=function(item){
    var idSucursal=item.id;
-      $http.delete('http://localhost:1345/sucursal/'+idSucursal , item)
+      $http.delete('http://52.33.127.122:1345/sucursal/'+idSucursal , item)
       $modalInstance.dismiss('cancel');
 };
 $scope.borrarDepartamento=function(item){
    var idDepartamento=item.id;
-      $http.delete('http://localhost:1345/departamento/'+idDepartamento , item)
+      $http.delete('http://52.33.127.122:1345/departamento/'+idDepartamento , item)
       $modalInstance.dismiss('cancel');
 };
 $scope.borrarTipoDepartamento=function(item){
    var idTipoDepartamento=item.id;
-      $http.delete('http://localhost:1345/tipoDepartamento/'+idTipoDepartamento , item)
+      $http.delete('http://52.33.127.122:1345/tipoDepartamento/'+idTipoDepartamento , item)
       $modalInstance.dismiss('cancel');
 };
 $scope.borrarTipoAlimento=function(item){
    var idTipoAlimento=item.id;
-      $http.delete('http://localhost:1345/tipoAlimento/'+idTipoAlimento , item)
+      $http.delete('http://52.33.127.122:1345/tipoAlimento/'+idTipoAlimento , item)
       $modalInstance.dismiss('cancel');
 };
 $scope.borrarTipoMedicamento=function(item){
    var idTipoMedicamento=item.id;
-      $http.delete('http://localhost:1345/tipoMedicamento/'+idTipoMedicamento , item)
+      $http.delete('http://52.33.127.122:1345/tipoMedicamento/'+idTipoMedicamento , item)
       $modalInstance.dismiss('cancel');
 };
 //  $scope.filterOptions = {
@@ -331,7 +331,7 @@ $scope.borrarTipoMedicamento=function(item){
 //     $scope.getPagedDataAsync = function (pageSize, page, searchText) {
 //         setTimeout(function () {
 //            var data ;
-//           $http.get('http://localhost:1345/alimento/?idUsuario='+MyService.data.idUsuario).then(function (resp2) {
+//           $http.get('http://52.33.127.122:1345/alimento/?idUsuario='+MyService.data.idUsuario).then(function (resp2) {
 //             $scope.alimentos = resp2.data.results;
 //           });
 //           data = $scope.alimentos;
@@ -368,7 +368,7 @@ $scope.borrarTipoMedicamento=function(item){
     $scope.mensajeBorrado="Al borrar este articulo, se perderá de manera definitiva toda la información referente al mismo, está seguro de querer borrarlo?";
     $scope.mensajeBorradoingrediente="Al borrar este ingrediente, se perderá de manera definitiva toda la información referente al mismo, está seguro de querer borrarlo?";
    
-    //  $http.get('http://localhost:1345/raza/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
+    //  $http.get('http://52.33.127.122:1345/raza/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
     //   $scope.razas = resp.data.results;
     // });
     $scope.okSalto = function (item) {
@@ -377,7 +377,7 @@ $scope.borrarTipoMedicamento=function(item){
       item.idUsuario=MyService.data.idUsuario;
       item.hembra=MyService.data.hembra;
       item.numero=MyService.data.numero;
-      $http.post('http://localhost:1345/salto/' ,item);  
+      $http.post('http://52.33.127.122:1345/salto/' ,item);  
       $modalInstance.close();
       // var pas = item._id;
       // $scope.ordenosFiltrados = $scope.ordenos.filter(function (ordeno) {
@@ -389,12 +389,12 @@ $scope.calculoExistenciaingredientes=function(idingrediente){
     var salidasingredientes=0;
     var existenciaingredientes=0;
     
-    $http.get('http://localhost:1345/entradaingrediente/?idingrediente='+idingrediente).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/entradaingrediente/?idingrediente='+idingrediente).then(function (resp) {
       $scope.entradasingredientes=resp.data.results;
       for (var i=0;i<$scope.entradasingredientes.length;i++){
         entradasingredientes=entradasingredientes+$scope.entradasingredientes[i].cantidad;
         }
-        $http.get('http://localhost:1345/salidaingrediente/?idingrediente='+idingrediente).then(function (resp) {
+        $http.get('http://52.33.127.122:1345/salidaingrediente/?idingrediente='+idingrediente).then(function (resp) {
           $scope.salidasingredientes = resp.data.results;
           for (var i=0;i<$scope.salidasingredientes.length;i++){
             salidasingredientes=salidasingredientes+$scope.salidasingredientes[i].cantidad;
@@ -423,12 +423,12 @@ $scope.calculoExistenciaingredientes=function(idingrediente){
     var salidas=0;
     var existencia=0;
     
-    $http.get('http://localhost:1345/entrada/?idArticulo='+idArticulo).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/entrada/?idArticulo='+idArticulo).then(function (resp) {
       $scope.entradas=resp.data.results;
       for (var i=0;i<$scope.entradas.length;i++){
         entradas=entradas+$scope.entradas[i].cantidad;
         }
-        $http.get('http://localhost:1345/salida/?idArticulo='+idArticulo).then(function (resp) {
+        $http.get('http://52.33.127.122:1345/salida/?idArticulo='+idArticulo).then(function (resp) {
           $scope.salidas = resp.data.results;
           for (var i=0;i<$scope.salidas.length;i++){
             salidas=salidas+$scope.salidas[i].cantidad;
@@ -443,7 +443,7 @@ $scope.calculoExistenciaingredientes=function(idingrediente){
       item.idArticulo=idArticulo;
       item.idUsuario=MyService.data.idUsuario;
        item.idEstablecimiento=MyService.data.idEstablecimiento;
-      $http.post('http://localhost:1345/entrada/' ,item);  
+      $http.post('http://52.33.127.122:1345/entrada/' ,item);  
       $modalInstance.close();
       $scope.calculoExistencia(idArticulo);
       // var pas = item._id;
@@ -460,7 +460,7 @@ $scope.calculoExistenciaingredientes=function(idingrediente){
       item.idUsuario=MyService.data.idUsuario;
 
        item.idEstablecimiento=MyService.data.idEstablecimiento;
-      $http.post('http://localhost:1345/entradaingrediente/' ,item);  
+      $http.post('http://52.33.127.122:1345/entradaingrediente/' ,item);  
       $modalInstance.close();
       $scope.calculoExistenciaingredientes(idingrediente);
       // var pas = item._id;
@@ -495,7 +495,7 @@ $scope.calculoExistenciaingredientes=function(idingrediente){
        var idArticulo=MyService.data.identificador;
       item.idArticulo=idArticulo;
       item.idUsuario=MyService.data.idUsuario;
-      $http.post('http://localhost:1345/peso/' ,item);  
+      $http.post('http://52.33.127.122:1345/peso/' ,item);  
      
       $modalInstance.close();
       // var pas = item._id;
@@ -519,7 +519,7 @@ $scope.calculoExistenciaingredientes=function(idingrediente){
        var idArticulo=MyService.data.identificador;
       item.idArticulo=idArticulo;
       item.idUsuario=MyService.data.idUsuario;
-      $http.post('http://localhost:1345/parto/' ,item);  
+      $http.post('http://52.33.127.122:1345/parto/' ,item);  
      $scope.nuevoArticulo={};
      $scope.nuevoArticulo.barcode=item.barcode;
       $scope.nuevoArticulo.nombre=item.nombre;
@@ -529,7 +529,7 @@ $scope.calculoExistenciaingredientes=function(idingrediente){
         $scope.nuevoArticulo.idUsuario=MyService.data.idUsuario;
         $scope.nuevoArticulo.sexo=item.sexo;
         $scope.nuevoArticulo.avatar=item.avatar;
-       $http.post('http://localhost:1345/articulo/' ,$scope.nuevoArticulo);
+       $http.post('http://52.33.127.122:1345/articulo/' ,$scope.nuevoArticulo);
       $modalInstance.close();
       // var pas = item._id;
       // $scope.ordenosFiltrados = $scope.ordenos.filter(function (ordeno) {
@@ -543,7 +543,7 @@ $scope.calculoExistenciaingredientes=function(idingrediente){
       item.idArticulo=idArticulo;
       item.idUsuario=MyService.data.idUsuario;
       item.idEntrada=MyService.data.idEntrada;
-      $http.post('http://localhost:1345/salida/' ,item);  
+      $http.post('http://52.33.127.122:1345/salida/' ,item);  
       $modalInstance.close();
       $scope.calculoExistenciaingredientes(idArticulo);
       // var pas = item._id;
@@ -561,7 +561,7 @@ $scope.calculoExistenciaingredientes=function(idingrediente){
       item.cantidadSalida=cantidadSalida;
       item.cantidad=cantidad;
       item.idEntradaingrediente=MyService.data.idEntradaingrediente;
-      $http.post('http://localhost:1345/salidaingrediente/' ,item);  
+      $http.post('http://52.33.127.122:1345/salidaingrediente/' ,item);  
       $modalInstance.close();
       $scope.calculoExistenciaingredientes(idingrediente);
       // var pas = item._id;
@@ -571,7 +571,7 @@ $scope.calculoExistenciaingredientes=function(idingrediente){
     };
     $scope.machos=[];
     $scope.cargaMachos = function(){
-      $http.get('http://localhost:1345/articulo/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
+      $http.get('http://52.33.127.122:1345/articulo/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
         $scope.articuloes = resp.data.results;
         for (var i=0;i<$scope.articuloes.length;++i){
           if($scope.articuloes[i].sexo=='Macho'){
@@ -582,32 +582,32 @@ $scope.calculoExistenciaingredientes=function(idingrediente){
     };
   $scope.cargaMachos();
     // $scope.cargaTiposDepartamentos = function(){
-    //   $http.get('http://localhost:1345/tipoDepartamento/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
+    //   $http.get('http://52.33.127.122:1345/tipoDepartamento/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
     //     $scope.tiposDepartamentos = resp.data.results;
     //   });
     // };
     // $scope.cargaTiposMedicamentos = function(){
-    //   $http.get('http://localhost:1345/tipoMedicamento/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
+    //   $http.get('http://52.33.127.122:1345/tipoMedicamento/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
     //     $scope.tiposMedicamentos = resp.data.results;
     //   });
     // };
     $scope.cargaDepartamentos = function(){
-      $http.get('http://localhost:1345/departamento/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
+      $http.get('http://52.33.127.122:1345/departamento/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
         $scope.Departamentos = resp.data.results;
       });
     };
     //  $scope.cargaTiposAlimentos = function(){
-    //   $http.get('http://localhost:1345/tipoAlimento/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
+    //   $http.get('http://52.33.127.122:1345/tipoAlimento/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
     //     $scope.tiposAlimentos = resp.data.results;
     //   });
     // };
     // $scope.cargaAlimentos = function(){
-    //   $http.get('http://localhost:1345/alimento/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
+    //   $http.get('http://52.33.127.122:1345/alimento/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
     //     $scope.alimentos = resp.data.results;
     //   });
     // };
     // $scope.cargaMedicamentos = function(){
-    //   $http.get('http://localhost:1345/medicamento/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
+    //   $http.get('http://52.33.127.122:1345/medicamento/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
     //     $scope.medicamentos = resp.data.results;
     //   });
     // };
@@ -638,7 +638,7 @@ $scope.okSucursal = function (item) {
       // item.idArticulo=idArticulo;
        item.idUsuario=MyService.data.idUsuario;
        item.idEstablecimiento=MyService.data.idEstablecimiento;
-      $http.post('http://localhost:1345/sucursal/' ,item);       
+      $http.post('http://52.33.127.122:1345/sucursal/' ,item);       
       $modalInstance.close();
     //   var pas = item._id;
     //   $scope.departamentosFiltrados = $scope.departamentos.filter(function (departamento) {  
@@ -656,7 +656,7 @@ $scope.okSucursal = function (item) {
       // var idArticulo=MyService.data.identificador;
       // item.idArticulo=idArticulo;
        item.idUsuario=MyService.data.idUsuario;
-      $http.post('http://localhost:1345/alimento/' ,item);       
+      $http.post('http://52.33.127.122:1345/alimento/' ,item);       
       $modalInstance.close();
     //   var pas = item._id;
     //   $scope.departamentosFiltrados = $scope.departamentos.filter(function (departamento) {  
@@ -669,7 +669,7 @@ $scope.okSucursal = function (item) {
 
 
        item.idUsuario=MyService.data.idUsuario;
-      $http.post('http://localhost:1345/raza/' ,item);       
+      $http.post('http://52.33.127.122:1345/raza/' ,item);       
       $modalInstance.close();
    
 
@@ -677,26 +677,26 @@ $scope.okSucursal = function (item) {
 
      $scope.okTipoMedicamento = function (item) {
        item.idUsuario=MyService.data.idUsuario;
-      $http.post('http://localhost:1345/tipomedicamento/' ,item);       
+      $http.post('http://52.33.127.122:1345/tipomedicamento/' ,item);       
       $modalInstance.close();
       };
 
 
        $scope.okTipoAlimento = function (item) {
        item.idUsuario=MyService.data.idUsuario;
-      $http.post('http://localhost:1345/tipoalimento/' ,item);       
+      $http.post('http://52.33.127.122:1345/tipoalimento/' ,item);       
       $modalInstance.close();
       };
 
        $scope.okTipoDepartamento = function (item) {
        item.idUsuario=MyService.data.idUsuario;
-      $http.post('http://localhost:1345/tipodepartamento/' ,item);       
+      $http.post('http://52.33.127.122:1345/tipodepartamento/' ,item);       
       $modalInstance.close();
       };
     $scope.okDepartamento = function (item) {
       item.idUsuario=MyService.data.idUsuario;
       item.idEstablecimiento=MyService.data.idEstablecimiento;
-      $http.post('http://localhost:1345/departamento/' ,item);       
+      $http.post('http://52.33.127.122:1345/departamento/' ,item);       
       $modalInstance.close();
   
 
@@ -711,7 +711,7 @@ $scope.okSucursal = function (item) {
       var idArticulo=MyService.data.identificador;
        item.idArticulo=idArticulo;
        item.idUsuario=MyService.data.idUsuario;
-      $http.post('http://localhost:1345/sumAlimento/' ,item);       
+      $http.post('http://52.33.127.122:1345/sumAlimento/' ,item);       
       $modalInstance.close();
     //   var pas = item._id;
     //   $scope.departamentosFiltrados = $scope.departamentos.filter(function (departamento) {  
@@ -727,7 +727,7 @@ $scope.okSucursal = function (item) {
       var idArticulo=MyService.data.identificador;
        item.idArticulo=idArticulo;
        item.idUsuario=MyService.data.idUsuario;
-      $http.post('http://localhost:1345/sumMedicamento/' ,item);       
+      $http.post('http://52.33.127.122:1345/sumMedicamento/' ,item);       
       $modalInstance.close();
     //   var pas = item._id;
     //   $scope.departamentosFiltrados = $scope.departamentos.filter(function (departamento) {  
@@ -743,7 +743,7 @@ $scope.okSucursal = function (item) {
       var idArticulo=MyService.data.identificador;
        item.idArticulo=idArticulo;
        item.idUsuario=MyService.data.idUsuario;
-      $http.post('http://localhost:1345/sumDepartamento/' ,item);       
+      $http.post('http://52.33.127.122:1345/sumDepartamento/' ,item);       
       $modalInstance.close();
     //   var pas = item._id;
     //   $scope.departamentosFiltrados = $scope.departamentos.filter(function (departamento) {  
@@ -763,7 +763,7 @@ $scope.okSucursal = function (item) {
 // ##########################################################################
     $scope.okConfirm = function (item) { 
       var idArticulo=MyService.data.identificador;
-      $http.delete('http://localhost:1345/articulo/'+idArticulo , item)
+      $http.delete('http://52.33.127.122:1345/articulo/'+idArticulo , item)
       // $scope.items.splice($scope.items.indexOf(item), 1);
       $scope.items = null;
       $scope.item = null;
@@ -772,7 +772,7 @@ $scope.okSucursal = function (item) {
     };
     $scope.okConfirmingrediente = function (item) { 
       var idingrediente=MyService.data.identificador;
-      $http.delete('http://localhost:1345/ingrediente/'+idingrediente , item)
+      $http.delete('http://52.33.127.122:1345/ingrediente/'+idingrediente , item)
       // $scope.items.splice($scope.items.indexOf(item), 1);
       $scope.items = null;
       $scope.item = null;
@@ -782,7 +782,7 @@ $scope.okSucursal = function (item) {
 
     $scope.okConfirm2 = function (item) { 
      var idCategoria=MyService.data.identificador;
-    $http.delete('http://localhost:1345/categoria/'+idCategoria, item)
+    $http.delete('http://52.33.127.122:1345/categoria/'+idCategoria, item)
     // $scope.groups.splice($scope.groups.indexOf(item), 1);
  $scope.item = null;
  $scope.items = null;
@@ -928,7 +928,7 @@ $scope.okSucursal = function (item) {
   ; 
   app.controller('TypeaheadDemoCtrl', ['$scope', '$http','MyService','$state', '$filter', 'filterFilter',function($scope, $http, MyService, $state,$filter,filterFilter) {
     $scope.selected = undefined;
-    $http.get('http://localhost:1345/articulo/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/articulo/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
       $scope.items2 = resp.data.results;
     });
 
@@ -941,7 +941,7 @@ $scope.okSucursal = function (item) {
 // $state.go('app.dashboard-v1');
     MyService.data.luz = 'on';
     
-    $http.get('http://localhost:1345/articulo/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/articulo/?idUsuario='+MyService.data.idUsuario).then(function (resp) {
       $scope.items2 = resp.data.results;
     });
   

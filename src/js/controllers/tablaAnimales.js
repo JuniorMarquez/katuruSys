@@ -3,7 +3,7 @@ app.controller('TablaArticuloesCtrl', ['$scope', '$http', function($scope, $http
 $scope.filter = '';
 var saludo="";
 $scope.saludo="hola";
-  $http.get('http://localhost:1345/articulo').then(function (resp) {
+  $http.get('http://52.33.127.122:1345/articulo').then(function (resp) {
     $scope.listado = resp.data.results;
     alert("holaaa");
     MyService.data.listado=resp.data.results;

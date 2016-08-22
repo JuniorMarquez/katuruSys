@@ -348,7 +348,7 @@ if (typeof MyService.data.idEstablecimiento==="undefined"){
 
     };
      
-    $http.get('http://localhost:1345/ingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
+    $http.get('http://52.33.127.122:1345/ingrediente/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
     $scope.ingredientes = resp.data.results;
 var numero = $scope.ingredientes.length;
  $scope.total= numero;
@@ -361,7 +361,7 @@ var numero = $scope.ingredientes.length;
     
 
 
-    $http.get('http://localhost:1345/categoria/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp2) {
+    $http.get('http://52.33.127.122:1345/categoria/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp2) {
     $scope.categorias = resp2.data.results;
 var numero2 = $scope.categorias.length;
  $scope.totalCategorias= numero2;
@@ -369,7 +369,7 @@ var numero2 = $scope.categorias.length;
     
 
 // $scope.getGraficoPrincipal =function(){
-//       // $http.get('http://localhost:1345/ordeno/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
+//       // $http.get('http://52.33.127.122:1345/ordeno/?idEstablecimiento='+MyService.data.idEstablecimiento).then(function (resp) {
 //       //   $scope.ordenosGrafico2 = resp.data.results;
 //       //   var cant = $scope.ordenosGrafico2.length;
 //       //   $scope.cantidadSalidas=$scope.ordenosGrafico2.length;
